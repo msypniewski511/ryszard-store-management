@@ -2,9 +2,41 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title RyszardStoreManager
+    %title
+      = yield(:title) + " | Store - administration."
     = csrf_meta_tags
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+
+    / Beginig of site header
+    %header#site_header
+      / Site navigation panel
+      %nav
+        %h2 Pragmatic Sport Store
+        %ul.nav
+          %li
+            = link_to "Catalog"
+          %li
+            = link_to "Adminstration"
+          %li
+            = link_to "Third link"
+          %li.log
+            = link_to "Login"
+          %li.log
+            = link_to "Logout"     
     = yield
+    / Main site footer
+    %footer#site_footer
+      %span= mail_to("msypniewski511@interia.pl", "Maciej Sypniewski", subject: "", encode: "javascript")
+      &copy; 2017
+      %nav
+        %ul.nav
+          %li
+            %a{href: "#"} first link
+          %li
+            %a{href: "#"} second link
+          %li
+            %a{href: "#"} trzeci link
+          %li
+            %a{href: "#"} czwarty link
