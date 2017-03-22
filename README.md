@@ -7,18 +7,26 @@
 
 * Rails version: Rails 5.0.2
 
-* System dependencies
+## Getting started
 
-* Configuration
+* To get started with the app, clone the repo and then install the needed gems:
 
-* Database creation
+$ bundle install --without production
 
-* Database initialization
 
-* How to run the test suite
+* Next, migrate the database:
 
-* Services (job queues, cache servers, search engines, etc.)
 
-* Deployment instructions
+$ rails db:migrate
 
-* ...
+
+* Finally, run the test suite to verify that everything is working correctly:
+
+
+$ rails test
+
+
+* If the test suite passes, you'll be ready to run the app in a local server:
+
+
+$ rails server
