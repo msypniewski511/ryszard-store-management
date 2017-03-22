@@ -19,8 +19,8 @@ class Admin::CompanyTest < ActiveSupport::TestCase
   end
 
   test "should update category" do
-  	c = Admin::Company.create(name: "inna nazwa", description: "description2")
-  	assert c.update(name: "nazwa", description: "description1")
+  	c = Admin::Company.first
+  	assert c.update_attributes(name: "nazwa", description: "description1")
   end
 
   test "should destroy" do

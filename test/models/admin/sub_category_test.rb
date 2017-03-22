@@ -24,8 +24,8 @@ class Admin::SubCategoryTest < ActiveSupport::TestCase
   end
 
   test "should update subcategory" do
-  	c = Admin::SubCategory.create(name: "inna nazwa", description: "description2", category_id: 1)
-  	assert c.update(name: "nazwa", description: "description1")
+  	c = Admin::SubCategory.first
+  	assert c.update_attributes(name: "nazwa", description: "description", category_id: 1)
   end
 
   test "should destroy" do
