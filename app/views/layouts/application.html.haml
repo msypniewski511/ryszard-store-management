@@ -24,7 +24,10 @@
           %li.log
             = link_to "Login"
           %li.log
-            = link_to "Logout"     
+            = link_to "Logout"
+    - if(notice) then
+      %p#notice
+        = notice     
     = yield
     / Main site footer
     %footer#site_footer

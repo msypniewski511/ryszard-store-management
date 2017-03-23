@@ -7,8 +7,8 @@
 one:
   name: "nazwa1"
   description: "description1"
-  category_id: "1"
+  category_id: 1
 two:
   name: "nazwa2"
   description: "description2"
-  category_id: "1"
+  category_id: 1
