@@ -23,12 +23,13 @@ fieldset {
       width: 200px;
       text-align: right;
     }
-    input {
+    input , select {
       width: 200px;
       margin-left: 10px;
       border-radius: 3px;
     }
     input[type="submit"]{
+    flaot: right;
       color: purple;
       background-color: #0099CC;
       @include gradient(#33FF99, $darker-color-header);
@@ -37,6 +38,7 @@ fieldset {
     }
   }
   div.submit {
+    float: left;
     width: 200px;
     text-align: right;
   }

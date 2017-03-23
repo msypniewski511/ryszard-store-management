@@ -18,12 +18,12 @@ class Admin::CompaniesControllerTest < ActionDispatch::IntegrationTest
   test "should get new" do
     get new_admin_company_path
     assert_response :success
-    assert_select 'legend', "Enter new company details:"
+    assert_select 'legend', "Enter New Company Details:"
   end
 
   test "should create company" do
     assert_difference('Admin::Company.count') do
-      post admin_companies_path, params: { admin_company: { description: @admin_company.description, name: "Now nazwa" } }
+      post admin_companies_path, params: { admin_company: { description: @admin_company.description, name: "Nowa nazwa" } }
     end
 
     assert_redirected_to admin_company_path(Admin::Company.last)
@@ -39,7 +39,7 @@ class Admin::CompaniesControllerTest < ActionDispatch::IntegrationTest
   test "should get edit" do
     get edit_admin_company_path(@admin_company)
     assert_response :success
-    assert_select "legend", "Enter new details:"
+    assert_select "legend", "Edit Company Details:"
   end
 
   test "should update company" do

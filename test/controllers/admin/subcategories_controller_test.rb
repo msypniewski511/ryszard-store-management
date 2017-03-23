@@ -21,14 +21,6 @@ class Admin::SubcategoriesControllerTest < ActionDispatch::IntegrationTest
     assert_select 'legend', "Enter new subcategory details:"
   end
 
-  test "should create subcategory" do
-    assert_difference('Admin::SubCategory.count') do
-      post admin_subcategories_path, params: { admin_subcategory: { description: @admin_subcategory.description, name: "Now nazwa", category_id: @admin_subcategory.category_id } }
-    end
-
-    assert_redirected_to admin_subcategory_path(Admin::SubCategory.last)
-    assert_equal "Subcategory: Nowa nazwa was successfully created", flash[:notice]
-  end
 
   test "should show subcategory" do
     get admin_subcategory_path(@admin_subcategory)

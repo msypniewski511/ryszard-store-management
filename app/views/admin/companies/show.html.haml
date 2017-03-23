@@ -1,0 +1,21 @@
+%h3= @admin_company.name
+%table.show
+  %thead
+    %tr
+      %th
+        Name:
+      %th
+        Description:
+      %th{colspan: 2}
+        Action:
+  %tbody
+    %tr
+      %td
+        = @admin_company.name
+      %td
+        = @admin_company.description
+      %td
+        = link_to "Edit", edit_admin_company_path
+      %td
+        = link_to "Delete", @admin_company, method: :delete, data: {confirm: "Are you sure to delete company: #{@admin_company.name}"}
+= link_to "Back", admin_companies_path

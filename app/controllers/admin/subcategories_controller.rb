@@ -1,10 +1,10 @@
 class Admin::SubcategoriesController < ApplicationController
-before_action :set_subcategory, only: [:show, :edit, :update, :destroy]
+before_action :set_category, only: [:show, :edit, :update, :destroy]
 
-  # GET //admin/subcategories
-  # GET /admin/subcategoriess.json
+  # GET /categories
+  # GET /categories.json
   def index
-    @admin_subcategories = Admin::SubCategory.all
+    @categories = Admin::SubCategory.all
   end
 
   # GET /categories/1
@@ -14,48 +14,49 @@ before_action :set_subcategory, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/categories/new
   def new
-    @admin_subcategory = Admin::SubCategory.new
+    @admin_category = Admin::SubCategory.new
   end
 
-  # GET /admin/subcategories/1/edit
+  # GET /categories/1/edit
   def edit
   end
 
-  # POST /admin/subcategories
-  # POST /admin/subcategories.json
+  # POST /categories
+  # POST /categories.json
   def create
-    @admin_subcategory = Admin::SubCategory.new(admin_subcategory_params)
+    #raise params.inspect
+    @admin_category = Admin::SubCategory.new(admin_category_params)
 
     respond_to do |format|
-      if @admin_subcategory.save
-        format.html { redirect_to admin_subcategory_path(@admin_subcategory), notice: "Subcategory: #{@admin_subcategory.name} was successfully created." }
-        format.json { render :show, status: :created, location: @admin_subcategory }
+      if @admin_category.save
+        format.html { redirect_to admin_subcategory_path(@admin_category), notice: "Subcategory: #{@admin_category.name} was successfully created." }
+        format.json { render :show, status: :created, location: @admin_category }
       else
         format.html { render :new }
-        format.json { render json: @admin_subcategory.errors, status: :unprocessable_entity }
+        format.json { render json: @admin_category.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /admin/subcategories/1
-  # PATCH/PUT /admin/subcategories/1.json
+  # PATCH/PUT /categories/1
+  # PATCH/PUT /categories/1.json
   def update
     respond_to do |format|
-      if @admin_subcategory.update(admin_subcategory_params)
-        format.html { redirect_to admin_subcategory_path(@admin_subcategory), notice: "Subcategory: #{@admin_subcategory.name} was successfully updated" }
-        format.json { render :show, status: :ok, location: @admin_subcategory }
+      if @admin_category.update(admin_category_params)
+        format.html { redirect_to admin_subcategory_path(@admin_category), notice: "Subcategory: #{@admin_category.name} was successfully updated" }
+        format.json { render :show, status: :ok, location: @admin_category }
       else
         format.html { render :edit }
-        format.json { render json: @admin_subcategory.errors, status: :unprocessable_entity }
+        format.json { render json: @admin_category.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /admin/subcategories/1
-  # DELETE /admin/subcategories/1.json
+  # DELETE /categories/1
+  # DELETE /categories/1.json
   def destroy
-  	flash[:notice] = "Subcategory: #{@admin_subcategory.name} was successfully destroyed."
-    @admin_subcategory.destroy
+    flash[:notice] = "Subcategory: #{@admin_category.name} was successfully deleted"
+    @admin_category.destroy
     respond_to do |format|
       format.html { redirect_to admin_subcategories_path }
       format.json { head :no_content }
@@ -64,12 +65,14 @@ before_action :set_subcategory, only: [:show, :edit, :update, :destroy]
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_subcategory
-      @admin_subcategory = Admin::SubCategory.find(params[:id])
+    def set_category
+      @admin_category = Admin::SubCategory.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def admin_subcategory_params
-      params.require(:admin_subcategory).permit(:name, :description, :category_id)
+    def admin_category_params
+      params.fetch(:admin_sub_category, {}).permit(:name, :description, :category_id)
+      #params.require(:admin_sub_category).permit(:name, :description, :category_id)
     end
+
 end

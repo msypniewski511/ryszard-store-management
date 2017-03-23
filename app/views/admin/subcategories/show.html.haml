@@ -1,0 +1,15 @@
+%h3= @admin_category.name
+%table.show
+  %tr
+    %th Name
+    %th Description
+    %th Category
+  %tr
+    %td= @admin_category.name
+    %td= @admin_category.description
+    %td= @admin_category.category.name
+  %tr
+    %td{colspan: 2}
+      = link_to 'Back', admin_subcategories_path |
+      = link_to 'Edit', edit_admin_subcategory_path(@admin_category)
+    %td
