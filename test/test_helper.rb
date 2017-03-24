@@ -10,6 +10,7 @@ class ActiveSupport::TestCase
   fixtures "admin/categories"
   fixtures "admin/sub_categories"
   fixtures "admin/companies"
+  fixtures "admin/products"
 
   # Add more helper methods to be used by all tests here...
 end
