@@ -8,6 +8,8 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   #fixtures :all
   fixtures "admin/categories"
+  fixtures "admin/sub_categories"
+  fixtures "admin/companies"
 
   # Add more helper methods to be used by all tests here...
 end

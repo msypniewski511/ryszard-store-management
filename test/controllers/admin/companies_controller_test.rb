@@ -23,15 +23,15 @@ class Admin::CompaniesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create company" do
     assert_difference('Admin::Company.count') do
-      post admin_companies_path, params: { admin_company: { description: @admin_company.description, name: "Nowa nazwa" } }
+      post admin_companies_path, params: { admin_company: { description: "Description", name: "Nowa nazwa" } }
     end
 
-    assert_redirected_to admin_company_path(Admin::Company.last)
+    assert_redirected_to admin_company_url(Admin::Company.last)
     assert_equal "Company: Nowa nazwa was successfully created", flash[:notice]
   end
 
   test "should show company" do
-    get admin_company_path(@admin_company)
+    get admin_company_url(@admin_company)
     assert_response :success
     assert_select "h3", "#{@admin_company.name}"
   end
@@ -50,10 +50,12 @@ class Admin::CompaniesControllerTest < ActionDispatch::IntegrationTest
 
   test "should destroy company" do
     assert_difference('Admin::Company.count', -1) do
-      delete admin_company_path(@admin_company)
+      delete admin_company_path(@admin_company), remote: true
     end
 
     assert_redirected_to admin_companies_path
     assert_equal "Company: #{@admin_company.name} was successfully deleted", flash[:notice]
   end
+
+
 end
