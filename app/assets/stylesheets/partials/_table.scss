@@ -51,4 +51,14 @@ table {
       color: $body-color-aqua;
     }
   }
+  tr:hover {
+    background-color: #00FF99;
+  }
+  a.destroy {
+    color: #FF0099;
+    &:hover {
+      color: white;
+      background-color: #FF0099;
+    }
+  }
 }

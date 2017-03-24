@@ -1,10 +1,10 @@
 class Admin::SubcategoriesController < ApplicationController
-before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_categories, only: [:index, :create, :update, :destroy]
+  before_action :set_category, only: [:show, :edit, :update, :destroy]
 
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Admin::SubCategory.all
   end
 
   # GET /categories/1
@@ -29,9 +29,12 @@ before_action :set_category, only: [:show, :edit, :update, :destroy]
 
     respond_to do |format|
       if @admin_category.save
-        format.html { redirect_to admin_subcategory_path(@admin_category), notice: "Subcategory: #{@admin_category.name} was successfully created." }
+        flash[:notice] = "Subcategory: #{@admin_category.name} was successfully created."
+        format.js { render :index }
+        format.html { redirect_to admin_subcategory_path(@admin_category) }
         format.json { render :show, status: :created, location: @admin_category }
       else
+        format.js { render :new }
         format.html { render :new }
         format.json { render json: @admin_category.errors, status: :unprocessable_entity }
       end
@@ -43,9 +46,12 @@ before_action :set_category, only: [:show, :edit, :update, :destroy]
   def update
     respond_to do |format|
       if @admin_category.update(admin_category_params)
-        format.html { redirect_to admin_subcategory_path(@admin_category), notice: "Subcategory: #{@admin_category.name} was successfully updated" }
+        flash.now[:notice] = "Subcategory: #{@admin_category.name} was successfully updated"
+        format.js { render :index }
+        format.html { redirect_to admin_subcategory_path(@admin_category) }
         format.json { render :show, status: :ok, location: @admin_category }
       else
+        format.js { render :edit }
         format.html { render :edit }
         format.json { render json: @admin_category.errors, status: :unprocessable_entity }
       end
@@ -58,6 +64,7 @@ before_action :set_category, only: [:show, :edit, :update, :destroy]
     flash[:notice] = "Subcategory: #{@admin_category.name} was successfully deleted"
     @admin_category.destroy
     respond_to do |format|
+      format.js { render :index }
       format.html { redirect_to admin_subcategories_path }
       format.json { head :no_content }
     end
@@ -67,6 +74,10 @@ before_action :set_category, only: [:show, :edit, :update, :destroy]
     # Use callbacks to share common setup or constraints between actions.
     def set_category
       @admin_category = Admin::SubCategory.find(params[:id])
+    end
+
+    def set_categories
+      @categories = Admin::SubCategory.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

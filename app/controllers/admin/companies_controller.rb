@@ -19,11 +19,12 @@ class Admin::CompaniesController < ApplicationController
     @admin_company = Admin::Company.new(company_params)
     respond_to do |format|
       if @admin_company.save
-        format.html {redirect_to admin_company_path(@admin_company), notice: "Company: #{@admin_company.name} was successfully created"}
-        format.js
+        flash.now[:notice] = "Company: #{@admin_company.name} was successfully created"
+        @admin_companies = Admin::Company.all
+        format.html { redirect_to admin_company_path(@admin_company)}
+        format.js {render :index}
       else
-        format.html {render :new}
-        format.js
+        format.js {render :new}
       end
     end
   end
@@ -31,11 +32,13 @@ class Admin::CompaniesController < ApplicationController
   def update
     respond_to do |format|
       if @admin_company.update_attributes(company_params)
-        format.html { redirect_to admin_company_path(@admin_company), notice: "Company: #{@admin_company.name} was successfully updated"}
-        format.js
+        flash.now[:notice] = "Company: #{@admin_company.name} was successfully updated"
+        @admin_companies = Admin::Company.all
+        format.html { redirect_to admin_company_path(@admin_company)}
+        format.js {render :index }
       else
-        format.html { render :edit}
-        format.js
+        format.html {}
+        format.js { render :edit }
       end
     end
   end
@@ -43,8 +46,10 @@ class Admin::CompaniesController < ApplicationController
   def destroy
     @admin_company.destroy
     respond_to do |format|
-      format.html { redirect_to admin_companies_path, notice: "Company: #{@admin_company.name} was successfully deleted"}
-      format.js
+      @admin_companies = Admin::Company.all
+      flash.now[:notice] = "Company: #{@admin_company.name} was successfully deleted"
+      format.html { redirect_to admin_companies_path}
+      format.js { render :index}
     end
   end
 

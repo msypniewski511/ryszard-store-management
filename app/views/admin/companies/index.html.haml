@@ -11,10 +11,13 @@
       %tr
         %td= company.name
         %td= company.description
-        %td= link_to 'Show', company
-        %td= link_to 'Edit', edit_admin_category_path(company)
-        %td= link_to 'Destroy', company, method: :delete, data: { confirm: "Are you sure to delete company: #{company.name} ?" }
+        %td
+          = link_to 'Show', company, remote: true
+          |
+          = link_to 'Edit', edit_admin_company_path(company), remote: true
+          |
+          = link_to 'Destroy', company, method: :delete, data: { confirm: "Are you sure to delete company: #{company.name} ?", remote: true }, class: "destroy"
     %tr
       %td
-        = link_to 'New Company', new_admin_company_url
+        = link_to 'New Company', new_admin_company_url, remote: true
       %td{colspan: 4}

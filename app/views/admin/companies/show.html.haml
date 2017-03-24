@@ -15,7 +15,10 @@
       %td
         = @admin_company.description
       %td
-        = link_to "Edit", edit_admin_company_path
+        = link_to "Edit", edit_admin_company_path, remote: true
       %td
-        = link_to "Delete", @admin_company, method: :delete, data: {confirm: "Are you sure to delete company: #{@admin_company.name}"}
-= link_to "Back", admin_companies_path
+        = link_to "Delete", @admin_company, method: :delete, data: {confirm: "Are you sure to delete company: #{@admin_company.name}", remote: true}
+    %tr
+      %td
+        = link_to "Back", admin_companies_path, remote: true
+      %td{colspan: 3}

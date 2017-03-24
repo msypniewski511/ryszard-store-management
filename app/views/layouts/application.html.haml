@@ -27,8 +27,22 @@
             = link_to "Logout"
     - if(notice) then
       %p#notice
-        = notice     
-    = yield
+        = notice
+    %section#main_content        
+      = yield
+    %section#side_bar
+      %nav
+        %h3 Administration menu
+        %hr
+        %ul.nav
+          %li#database_list
+            = link_to "Products"
+          %li#database_list
+            = link_to "Company", admin_companies_path, remote: true
+          %li#database_list
+            = link_to "Categories", admin_categories_path, remote: true
+          %li#database_list
+            = link_to "Subcategories", admin_subcategories_path, remote: true 
     / Main site footer
     %footer#site_footer
       %span= mail_to("msypniewski511@interia.pl", "Maciej Sypniewski", subject: "", encode: "javascript")

@@ -7,7 +7,7 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   test "should get index" do
     get static_pages_index_url
     assert_response :success
-    assert_select 'h1', 'Strona startowa sklepu.'
+    assert_select 'h2', 'Strona startowa sklepu.'
     assert_select 'title', "Home | #{@base_title}"
     assert_select 'header'
     assert_select 'footer'

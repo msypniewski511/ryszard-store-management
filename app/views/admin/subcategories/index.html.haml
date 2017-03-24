@@ -13,10 +13,13 @@
         %td= subcategory.name
         %td= subcategory.description
         %td= subcategory.category.name
-        %td= link_to 'Show', admin_subcategory_path(subcategory)
-        %td= link_to 'Edit', edit_admin_subcategory_path(subcategory)
-        %td= link_to 'Destroy', admin_subcategory_path(subcategory), method: :delete, data: { confirm: "Are you sure to delete company: #{subcategory.name} ?" }
+        %td
+          = link_to 'Show', admin_subcategory_path(subcategory), remote: true
+          |
+          = link_to 'Edit', edit_admin_subcategory_path(subcategory), remote: true
+          |
+          = link_to 'Destroy', admin_subcategory_path(subcategory), method: :delete, data: { confirm: "Are you sure to delete company: #{subcategory.name} ?" }, remote: true, class: "destroy"
     %tr
       %td
-        = link_to 'New Subcategory', new_admin_subcategory_url
+        = link_to 'New Subcategory', new_admin_subcategory_url, remote: true
       %td{colspan: 5}
