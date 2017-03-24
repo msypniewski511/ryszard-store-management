@@ -5,9 +5,11 @@
 # below each fixture, per the syntax in the comments below
 #
 one:
+  id: 1
   name: "Olimp"
   description: "Leki w tabletkach"
 two:
+  id: 2
   name: "one"
   description: "jakis opis"
 

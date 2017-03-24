@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    resources :products
+  end
+
+
+
   get 'static_pages/index'
   get 'static_pages/about'
   get 'static_pages/contact'

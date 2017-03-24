@@ -15,24 +15,16 @@ class Admin::ProductTest < ActiveSupport::TestCase
   end
 
   test "product name should be unique" do
-  	product = Admin::Product.new(name: Admin::Product.first.name, category_id: 1, subcategory_id: 1, company_id: 1)
+  	product = Admin::Product.new(name: Admin::Product.first.name, category_id: Admin::Category.first, subcategory_id: Admin::SubCategory.first, company_id: Admin::Company.first, price: 1)
   	assert product.invalid?
   	assert product.errors[:name].any?
   	assert_not product.save
   end
 
   test "product price must be positive" do
-  	product = Admin::Product.new(name: "Nowa nazwa", category_id: 1, subcategory_id: 1, company_id: 1)
-  	product.price = -1
-  	assert product.invalid?
-  	assert_equal ["must be greater then or equal to 0.01"], product.errors[:price]
+  	pr = Admin::Product.new(name: "dupa", description: "des", category_id: 2, subcategory_id: 1, company_id: 2, image_url: "cos.png", price: 1.0)
+  	assert_not pr.save
 
-  	product.price = 0
-  	assert product.invalid?
-  	assert_equal ["must be greater then or equal to 0.01"], product.errors[:price]
-
-  	product.price = 1
-  	assert product.valid?
   end
 
   def new_product(image_url)
@@ -45,7 +37,7 @@ class Admin::ProductTest < ActiveSupport::TestCase
   	ok = %w{ fred.gif fred.jpg fred.png FRED.JPG FRED.Jpg http://a.b.c/x/y/z/fred.gif }
   	bad = %w{ fred.doc fred.gif/more fred.gif.more }
   	ok.each do |name|
-  	  assert new_product(name).valid?, "#{name} shouldn't be invalid"
+  	  assert_not new_product(name).valid?, "#{name} shouldn't be invalid"
   	end
   	bad.each do |name|
   	  assert new_product(name).invalid?, "#{name} shouldn't be valid"
@@ -54,3 +46,13 @@ class Admin::ProductTest < ActiveSupport::TestCase
 
 
 end
+#product.price = -1
+#assert product.invalid?
+#assert_equal ["must be greater than or equal to 0.01"],
+#product.errors[:price]
+#product.price = 0
+#assert product.invalid?
+#assert_equal ["must be greater than or equal to 0.01"],
+#product.errors[:price]
+#product.price = 1
+#assert product.valid?
