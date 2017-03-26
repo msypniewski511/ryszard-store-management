@@ -1,0 +1,29 @@
+%h1 Listing expiry dates
+
+%table
+  %thead
+    %tr
+      %th Product
+      %th Part number
+      %th Count
+      %th Date added
+      %th Date expiry
+      %th{colspan: 1} Action
+
+  %tbody
+    - @expiry_dates.each do |expiry_date|
+      %tr
+        %td= link_to(expiry_date.product.name.to_s, expiry_date, remote: true)
+        %td= expiry_date.part_number
+        %td= expiry_date.count
+        %td= expiry_date.date_added.to_formatted_s(:long) 
+        %td= expiry_date.date_expiry.to_formatted_s(:long)
+        %td
+          =link_to 'Edit', edit_expiry_date_path(expiry_date), remote: true
+          |
+          =link_to 'Destroy', expiry_date, :method => :delete, :data => { :confirm => 'Are you sure?' }, remote: true, class: "destroy"
+    %tr
+      %td= link_to 'New Expiry date', new_expiry_date_path, remote: true
+      %td{colspan: 5}
+
+%hr

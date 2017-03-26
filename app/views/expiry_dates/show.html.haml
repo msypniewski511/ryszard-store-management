@@ -1,0 +1,19 @@
+%p
+  %b Product:
+  = @expiry_date.product_id
+%p
+  %b Part number:
+  = @expiry_date.part_number
+%p
+  %b Count:
+  = @expiry_date.count
+%p
+  %b Date added:
+  = @expiry_date.date_added
+%p
+  %b Date expiry:
+  = @expiry_date.date_expiry
+
+= link_to 'Edit', edit_expiry_date_path(@expiry_date), remote: true
+\|
+= link_to 'Back', expiry_dates_path, remote: true

@@ -1,0 +1,28 @@
+- tab_month = (tablica_miesiaca(Time.now))
+<table>
+    <thead  class="next-month-side">
+      <tr><td colspan="6" id="month-name"><%= data_month(Time.now.month) %><td></td></tr>
+      <tr>
+        <td>Pon</td><td>Wto</td><td>Śro</td><td>Czw</td><td>Pią</td><td id="weekend">Sob</td><td id="weekend">Nie</td>
+      </tr>
+    </thead>
+    <% i = 0 %>
+    <% tab_month.each do |dzien| %>
+      <% if i == 0 %>
+        <tr>
+      <% end %>
+      <% tab_day = dzien.split('|') %>
+      <% if i >= 5 %>
+        <td class="weekend-day"><%= tab_day[0] %></td>
+      <% else %>
+        <td class="<%= tab_day[1] %>"><%= tab_day[0] %></td>
+      <% end %>
+      <% i += 1 %>
+      <% if i == 7 %>
+        </tr>
+        <% i = 0 %>
+      <% end %>
+    <% end %>
+</table>
+
+<hr>

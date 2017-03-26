@@ -1,0 +1,25 @@
+= form_for @expiry_date, remote: true do |f|
+  - if @expiry_date.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@expiry_date.errors.count, "error")} prohibited this expiry_date from being saved:"
+      %ul
+        - @expiry_date.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :product_id
+    = f.collection_select(:product_id, Admin::Product.all, :id, :name)
+  .field
+    = f.label :part_number
+    = f.number_field :part_number
+  .field
+    = f.label :count
+    = f.number_field :count
+  .field_date
+    = f.label :date_added
+    = f.datetime_select :date_added
+  .field_date
+    = f.label :date_expiry
+    = f.datetime_select :date_expiry
+  .actions
+    = f.submit 'Save'
