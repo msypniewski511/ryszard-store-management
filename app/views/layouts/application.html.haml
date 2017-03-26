@@ -42,7 +42,9 @@
           %li#database_list
             = link_to "Categories", admin_categories_path, remote: true
           %li#database_list
-            = link_to "Subcategories", admin_subcategories_path, remote: true 
+            = link_to "Subcategories", admin_subcategories_path, remote: true
+          %li#database_list
+            = link_to "Expiry Dates", expiry_dates_path, remote: true 
     / Main site footer
     %footer#site_footer
       %span= mail_to("msypniewski511@interia.pl", "Maciej Sypniewski", subject: "", encode: "javascript")

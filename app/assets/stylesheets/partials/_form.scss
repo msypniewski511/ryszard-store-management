@@ -37,6 +37,16 @@ fieldset {
       border-radius: 5px;
     }
   }
+  div.field_date{
+    display: inline-block;
+    width: 440px;
+    label {
+      width: 100px;
+    }
+    select {
+      width: 70px;
+    }
+  }
   div.submit {
     float: left;
     width: 200px;

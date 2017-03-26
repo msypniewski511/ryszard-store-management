@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'calendar/index'
+
+  get 'calendar/show'
+
+  resources :expiry_dates
   namespace :admin do
     resources :products
   end
