@@ -23,7 +23,9 @@ $brand-success: #5cb85c;
 	line-height: 1em;
 	text-transform: lowercase;
 }
-
+table.calendar-container {
+	width: 100%;
+}
 .calendar {
 	background: #fff;
 	border-radius: 0 0 1em 1em;
