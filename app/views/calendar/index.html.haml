@@ -1,11 +1,11 @@
-- tab_month = (tablica_miesiaca(Time.now))
+- tab_month = (tablica_miesiaca(@time_now))
 .calendar-container
   %header
     .day
       - t = Time.now
       = t.day
     .month
-      = data_month(t.month)
+      = data_month(@time_now.month)
   %table.calendar
     %thead.calendar_header
       %tr
@@ -18,16 +18,16 @@
         %td.weekend-day Nie
     %tbody
         
-      - string = tablica_miesiaca(Time.now)
+      - string = tablica_miesiaca(@time_now)
       - string.shift
       - i = 0
       - string.each do |dzien|
         - if i == 0
           %tr
         - tab_day = dzien.split('|')
-        - if tab_day[0].to_i == Time.now.day
+        - if ((tab_day[0].to_i == Time.now.day) && tab_day[1] != "prev-month")
           %td.current-day= tab_day[0]
-        - elsif i >= 5
+        - elsif ((i >= 5) && ((tab_day[1] != "prev-month") && (tab_day[1] != "next-month")))
           %td.weekend-day
             = tab_day[0]
         - else
@@ -37,6 +37,8 @@
         - if i == 7
           - i = 0
       %tr
-  %div.ring-left Na lewo
-  %div.ring-right Na prwo
+  %div.ring-left
+    = link_to("Previous month", calendar_show_path(:month => 'prev'), remote: true)
+  %div.ring-right
+    = link_to("Next month", calendar_show_path(:month => 'next'), remote: true)
 <hr>

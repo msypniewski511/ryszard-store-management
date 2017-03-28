@@ -1,9 +1,9 @@
 class CalendarController < ApplicationController
-  before_action :set_time, only: :show
+  before_action :set_time, only: [:show, :index]
   def index
-  	@time_now = Time.now
-  	@month = @time_now.month
-  	@year = @time_now.year
+    @moja = session[:month_number]
+    @month = @time_now.month
+    @year = @time_now.year
   end
 
   def show
