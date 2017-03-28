@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170326162146) do
+ActiveRecord::Schema.define(version: 20170328175736) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,6 +53,13 @@ ActiveRecord::Schema.define(version: 20170326162146) do
     t.index ["name"], name: "index_admin_sub_categories_on_name", using: :btree
   end
 
+  create_table "calendars", force: :cascade do |t|
+    t.string   "month"
+    t.integer  "year"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "expiry_dates", force: :cascade do |t|
     t.integer  "product_id",  null: false
     t.integer  "part_number"
@@ -61,6 +68,7 @@ ActiveRecord::Schema.define(version: 20170326162146) do
     t.datetime "date_expiry", null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "time_expiry"
     t.index ["product_id"], name: "index_expiry_dates_on_product_id", using: :btree
   end
 

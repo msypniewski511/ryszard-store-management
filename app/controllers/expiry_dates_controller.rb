@@ -81,6 +81,6 @@ class ExpiryDatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def expiry_date_params
-      params.require(:expiry_date).permit(:product_id, :part_number, :count, :date_added, :date_expiry)
+      params.require(:expiry_date).permit(:product_id, :part_number, :count, :date_added, :date_expiry, :time_expiry)
     end
 end

@@ -1,28 +1,42 @@
 - tab_month = (tablica_miesiaca(Time.now))
-<table>
-    <thead  class="next-month-side">
-      <tr><td colspan="6" id="month-name"><%= data_month(Time.now.month) %><td></td></tr>
-      <tr>
-        <td>Pon</td><td>Wto</td><td>Śro</td><td>Czw</td><td>Pią</td><td id="weekend">Sob</td><td id="weekend">Nie</td>
-      </tr>
-    </thead>
-    <% i = 0 %>
-    <% tab_month.each do |dzien| %>
-      <% if i == 0 %>
-        <tr>
-      <% end %>
-      <% tab_day = dzien.split('|') %>
-      <% if i >= 5 %>
-        <td class="weekend-day"><%= tab_day[0] %></td>
-      <% else %>
-        <td class="<%= tab_day[1] %>"><%= tab_day[0] %></td>
-      <% end %>
-      <% i += 1 %>
-      <% if i == 7 %>
-        </tr>
-        <% i = 0 %>
-      <% end %>
-    <% end %>
-</table>
-
+.calendar-container
+  %header
+    .day
+      - t = Time.now
+      = t.day
+    .month
+      = data_month(t.month)
+  %table.calendar
+    %thead.calendar_header
+      %tr
+        %td Pon
+        %td Wto
+        %td Sro
+        %td Czw
+        %td Pia
+        %td.weekend-day Sob
+        %td.weekend-day Nie
+    %tbody
+        
+      - string = tablica_miesiaca(Time.now)
+      - string.shift
+      - i = 0
+      - string.each do |dzien|
+        - if i == 0
+          %tr
+        - tab_day = dzien.split('|')
+        - if tab_day[0].to_i == Time.now.day
+          %td.current-day= tab_day[0]
+        - elsif i >= 5
+          %td.weekend-day
+            = tab_day[0]
+        - else
+          %td{class: "#{tab_day[1]}"}
+            = tab_day[0]
+        - i += 1
+        - if i == 7
+          - i = 0
+      %tr
+  %div.ring-left Na lewo
+  %div.ring-right Na prwo
 <hr>

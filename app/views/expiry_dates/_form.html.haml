@@ -21,5 +21,8 @@
   .field_date
     = f.label :date_expiry
     = f.datetime_select :date_expiry
+  .field_date
+    = f.label :time_expiry, "Get period to expiry date in days:"
+    = f.number_field :time_expiry
   .actions
     = f.submit 'Save'

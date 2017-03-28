@@ -1,2 +1,46 @@
-%h1 Calendar#show
-%p Find me in app/views/calendar/show.html.haml
+%h1 Calendar Rok: #{@year}, Miesiac: #{@month}
+%h2 #{params[:month]}  #{session[:month_number]} moja= #{@moja}
+- tab_month = (tablica_miesiaca(@time_now))
+.calendar-container
+  %header
+    .day
+      - t = Time.now
+      = t.day
+    .month
+      = data_month(@time_now.month)
+  %table.calendar
+    %thead.calendar_header
+      %tr
+        %td Pon
+        %td Wto
+        %td Sro
+        %td Czw
+        %td Pia
+        %td.weekend-day Sob
+        %td.weekend-day Nie
+    %tbody
+        
+      - string = tablica_miesiaca(@time_now)
+      - string.shift
+      - i = 0
+      - string.each do |dzien|
+        - if i == 0
+          %tr
+        - tab_day = dzien.split('|')
+        - if ((tab_day[0].to_i == Time.now.day) && tab_day[1] != "prev-month")
+          %td.current-day= tab_day[0]
+        - elsif ((i >= 5) && ((tab_day[1] != "prev-month") && (tab_day[1] != "next-month")))
+          %td.weekend-day
+            = tab_day[0]
+        - else
+          %td{class: "#{tab_day[1]}"}
+            = tab_day[0]
+        - i += 1
+        - if i == 7
+          - i = 0
+      %tr
+  %div.ring-left
+    = link_to("Previous month", calendar_show_path(:month => 'prev'), remote: true)
+  %div.ring-right
+    = link_to("Next month", calendar_show_path(:month => 'next'), remote: true)
+<hr>
