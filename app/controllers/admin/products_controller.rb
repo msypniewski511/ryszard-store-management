@@ -85,6 +85,6 @@ class Admin::ProductsController < ApplicationController
     def not_found
       message = "Foo with ID #{params[:id]} not found."
       logger.error message
-      redirect_to not_found_url, info: message
+      @products = Admin::Product.first
     end
 end
