@@ -46,8 +46,15 @@
       = link_to("Previous month", calendar_index_path(:month => 'prev'), remote: true)
     %div.ring-right
       = link_to("Next month", calendar_index_path(:month => 'next'), remote: true)
-  %hr
-%section#right
-  =render 'shared/callendar'
 
-  =render 'shared/callendar'
+%section#right
+  .calendar-container-side
+    %header.previous
+      - @time_to_display = @time_now.months_ago(1);
+      .month= data_month(@time_to_display.month)
+    =render 'shared/callendar', time_to_display: @time_to_display
+    %header.next
+      - @time_to_display = @time_now.months_since(1)
+      .month= data_month(@time_to_display.month)
+    =render 'shared/callendar', time_to_display: @time_to_display
+

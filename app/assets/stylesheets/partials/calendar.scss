@@ -175,6 +175,27 @@ thead.calendar_header{
   table {
     width: 430px;
   }
+  header {
+    width: 398px;
+    border-radius: 10px 10px 0 0;
+    background: #e66b6b;
+    
+    color: #fff;
+    padding: 1em 1em;
+    margin-bottom: 0px;
+    .month {
+      font-size: 2em;
+      line-height: 1em;
+      text-transform: lowercase;
+    }
+    &.previous {
+      @include gradient(#FFCCCC, #FF0000);
+    }
+    &.next {
+      @include gradient(#66FF33, #006600);
+    }
+  }
+
 }
 
     
