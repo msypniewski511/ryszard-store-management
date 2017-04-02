@@ -1,0 +1,14 @@
+%nav
+  %h3 Administration menu
+  %hr
+  %ul.nav
+    %li#database_list
+      = link_to "Products", admin_products_path, remote: true
+    %li#database_list
+      = link_to "Company", admin_companies_path, remote: true
+    %li#database_list
+      = link_to "Categories", admin_categories_path, remote: true
+    %li#database_list
+      = link_to "Subcategories", admin_subcategories_path, remote: true
+    %li#database_list
+      = link_to "Expiry Dates", expiry_dates_path, remote: true

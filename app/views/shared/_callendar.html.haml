@@ -1,0 +1,36 @@
+.calendar-container-side
+  %header
+
+    .month
+      = data_month(@time_now.month)
+      
+  %table.calendar
+    %thead.calendar_header
+
+      %tr.calendar
+        %td Pon
+        %td Wto
+        %td Sro
+        %td Czw
+        %td Pia
+        %td.weekend-day Sob
+        %td.weekend-day Nie
+    %tbody.calendar_tbody
+    - string = tablica_miesiaca(@time_now)
+    - string.shift
+    - i = 0
+    - string.each do |dzien|
+      - if i == 0
+        %tr
+      - tab_day = dzien.split('|')
+      - if ((tab_day[0].to_i == Time.now.day) && tab_day[1] != "prev-month" && tab_day[1] !="next-month")
+        %td.current-day= tab_day[0]
+      - elsif ((i >= 5) && ((tab_day[1] != "prev-month") && (tab_day[1] != "next-month")))
+        %td.weekend-day
+          = tab_day[0]
+      - else
+        %td{class: "#{tab_day[1]}"}
+          = tab_day[0]
+      - i += 1
+      - if i == 7
+        - i = 0

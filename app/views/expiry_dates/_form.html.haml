@@ -17,10 +17,10 @@
     = f.number_field :count
   .field_date
     = f.label :date_added
-    = f.datetime_select :date_added
+    = f.date_field :date_added, discard_hours: true, discard_minutes: true, discard_seconds: true
   .field_date
     = f.label :date_expiry
-    = f.datetime_select :date_expiry
+    = f.date_field :date_expiry
   .field_date
     = f.label :time_expiry, "Get period to expiry date in days:"
     = f.number_field :time_expiry

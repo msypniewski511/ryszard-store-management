@@ -5,11 +5,11 @@ one:
   part_number: 1
   count: 1
   date_added: 2017-03-26 18:21:46
-  date_expiry: MyString
+  date_expiry: 2018-03-26 18:21:46
 
 two:
   product_id: 1
   part_number: 1
   count: 1
   date_added: 2017-03-26 18:21:46
-  date_expiry: MyString
+  date_expiry: 2018-03-26 18:21:46

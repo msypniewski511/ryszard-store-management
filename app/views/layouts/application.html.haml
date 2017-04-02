@@ -8,57 +8,11 @@
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-
-    / Beginig of site header
-    %header#site_header
-      / Site navigation panel
-      %nav
-        %h2 Pragmatic Sport Store
-        %ul.nav
-          %li
-            = link_to "Catalog"
-          %li
-            = link_to "Adminstration"
-          %li
-            = link_to "Callendar", calendar_index_path, remote: true
-          %li.log
-            = link_to "Login"
-          %li.log
-            = link_to "Logout"
+    =render '/shared/header'
     - if(notice) then
       %p#notice
         = notice
-    %section#main_content        
-      = yield
-    %section#side_bar
-      %nav
-        %h3 Administration menu
-        %hr
-        %ul.nav
-          %li#database_list
-            = link_to "Products", admin_products_path, remote: true
-          %li#database_list
-            = link_to "Company", admin_companies_path, remote: true
-          %li#database_list
-            = link_to "Categories", admin_categories_path, remote: true
-          %li#database_list
-            = link_to "Subcategories", admin_subcategories_path, remote: true
-          %li#database_list
-            = link_to "Expiry Dates", expiry_dates_path, remote: true 
-          %li#database_list
-            = link_to "Callendar", calendar_show_path, remote: true
-          %li#database_list
-    / Main site footer
-    %footer#site_footer
-      %span= mail_to("msypniewski511@interia.pl", "Maciej Sypniewski", subject: "", encode: "javascript")
-      &copy; 2017
-      %nav
-        %ul.nav
-          %li
-            %a{href: "#"} first link
-          %li
-            %a{href: "#"} second link
-          %li
-            %a{href: "#"} trzeci link
-          %li
-            %a{href: "#"} czwarty link
+    =yield
+
+    / Footer
+    =render '/shared/footer'

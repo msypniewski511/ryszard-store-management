@@ -11,6 +11,7 @@ class ActiveSupport::TestCase
   fixtures "admin/sub_categories"
   fixtures "admin/companies"
   fixtures "admin/products"
+  fixtures :expiry_dates
 
   # Add more helper methods to be used by all tests here...
 end

@@ -17,14 +17,15 @@ class ExpiryDatesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create expiry_date" do
     assert_difference('ExpiryDate.count') do
-      post expiry_dates_url, params: { expiry_date: { count: @expiry_date.count, date_added: @expiry_date.date_added, date_expiry: @expiry_date.date_expiry, part_number: @expiry_date.part_number, product_id: @expiry_date.product_id } }
+      post expiry_dates_url, params: { expiry_date: { product_id: Admin::Product.first.id, count: 1, date_expiry: Time.now, time_expiry: Time.now } }
     end
 
-    assert_redirected_to expiry_date_url(ExpiryDate.last)
+    assert_response :redirect
   end
 
+
   test "should show expiry_date" do
-    get expiry_date_url(@expiry_date)
+    get expiry_date_path(@expiry_date)
     assert_response :success
   end
 
@@ -34,8 +35,8 @@ class ExpiryDatesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update expiry_date" do
-    patch expiry_date_url(id: @expiry_date.id), params: { expiry_date: { count: @expiry_date.count, date_added: @expiry_date.date_added, date_expiry: @expiry_date.date_expiry, part_number: @expiry_date.part_number, product_id: @expiry_date.product_id } }
-    assert_redirected_to expiry_date_url(@expiry_date)
+    patch expiry_date_url(@expiry_date), params: { expiry_date: { product_id: Admin::Product.first.id, count: 1, date_expiry: Time.now, time_expiry: Time.now } }
+    assert_redirected_to @expiry_date
   end
 
   test "should destroy expiry_date" do

@@ -1,7 +1,7 @@
 class CalendarController < ApplicationController
-  before_action :set_time, only: :show
+  before_action :set_time, only: [:show, :index]
   def index
-    set_time
+    @moja = session[:month_number]
     @month = @time_now.month
     @year = @time_now.year
   end
@@ -14,6 +14,7 @@ class CalendarController < ApplicationController
 
   private
 
+  # Set time based on session information about user choose
   def set_time
   	time = Time.now
   	set_session
@@ -22,28 +23,14 @@ class CalendarController < ApplicationController
         @time_now = time.months_ago(-(session[:month_number]))
       elsif (session[:month_number] > 0) then
         @time_now = time.months_since(session[:month_number])
-      
+      # if session is not yet set time is actual time
       else
         @time_now = time
       end
     end
-      	
-#  	if (params[:month] == "prev" && session[:month_number] > 0) then
-#  	  @time_now = time.months_since(session[:month_number])
-#  	elsif (params[:month] == "prev" && session[:month_number] = 0) then
-#  	  @time_now = time
-#    elsif (params[:month] == "next" && session[:month_number] = 0) then
-#      @time_now = time
-#    elsif (params[:month] == "next" && session[:month_number] > 0) then
-#      @time_now = time.months_since(session[:month_number])
-#    elsif (params[:month] == "next" && session[:month_number] < 0) then
-#      @time_now = time.months_ago(session[:month_number])
-#    else
-#      @time_now = time
-#   end
   end
 
-
+  # Set session's variable used to change time in callendar month. 
   def set_session
     if !session[:month_number] then
       session[:month_number] = 0
@@ -57,5 +44,8 @@ class CalendarController < ApplicationController
   	  	session[:month_number] = 0
   	  end
   	end
+  end
+
+  def get_month_info
   end
 end

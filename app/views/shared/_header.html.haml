@@ -1,0 +1,16 @@
+/ Beginig of site header
+%header#site_header
+  / Site navigation panel
+  %nav
+  %h2 Pragmatic Sport Store
+  %ul.nav
+    %li
+      = link_to "Catalog"
+    %li
+      = link_to "Adminstration", admin_index_path
+    %li
+      = link_to "Callendar", calendar_index_path
+    %li.log
+      = link_to "Login"
+    %li.log
+      = link_to "Logout"

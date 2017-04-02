@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
+  get 'admin/index', to: 'application#index'
   get 'calendar/index'
-
   get 'calendar/show'
 
   resources :expiry_dates
