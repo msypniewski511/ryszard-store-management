@@ -50,11 +50,20 @@
 %section#right
   .calendar-container-side
     %header.previous
+      - @points = []
       - @time_to_display = @time_now.months_ago(1);
+      - c = Calendar.where(month: @month-1)
+      - c.each do |cal|
+        - @points << cal.day
       .month= data_month(@time_to_display.month)
     =render 'shared/callendar', time_to_display: @time_to_display
     %header.next
+      - @points = []
       - @time_to_display = @time_now.months_since(1)
+      - c = Calendar.where(month: @month+1)
+      - c.each do |cal|
+        - @points << cal.day
       .month= data_month(@time_to_display.month)
     =render 'shared/callendar', time_to_display: @time_to_display
+= @points.inspect
 

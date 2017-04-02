@@ -2,7 +2,6 @@ class Calendar < ApplicationRecord
   
 
 
-
   # Save expire period date into string
   def save_expiry_date_period(month, year, day, product_id, part_number)
 

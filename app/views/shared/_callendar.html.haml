@@ -22,7 +22,7 @@
     - if i == 0
       %tr
     - tab_day = dzien.split('|')
-    - if ((tab_day[0].to_i == Time.now.day) && tab_day[1] != "prev-month" && tab_day[1] !="next-month")
+    - if (@points.include?(tab_day[0].to_i) && tab_day[1] != "prev-month" && tab_day[1] !="next-month")
       %td.current-day= tab_day[0]
     - elsif ((i >= 5) && ((tab_day[1] != "prev-month") && (tab_day[1] != "next-month")))
       %td.weekend-day
