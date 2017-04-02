@@ -1,6 +1,7 @@
 class Admin::ProductsController < ApplicationController
   before_action :set_products, only: [:index, :destroy, :create, :update]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
   # GET /products
   # GET /products.json
@@ -79,5 +80,11 @@ class Admin::ProductsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_product_params
       params.require(:admin_product).permit(:name, :description, :company_id, :category_id, :subcategory_id, :image_url, :price)
+    end
+
+    def not_found
+      message = "Foo with ID #{params[:id]} not found."
+      logger.error message
+      redirect_to not_found_url, info: message
     end
 end
