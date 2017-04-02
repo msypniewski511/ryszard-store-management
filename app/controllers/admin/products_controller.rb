@@ -74,7 +74,7 @@ class Admin::ProductsController < ApplicationController
     end
 
     def set_products
-      @products = Admin::Product.first
+      @products = Admin::Product.all
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
