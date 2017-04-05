@@ -1,7 +1,7 @@
 class ExpiryDate < ApplicationRecord
   # After save new record should save changes to the callendar table
-  after_save :change_callendar
-  after_destroy :destroy_calendar
+  #after_save :change_callendar
+  #after_destroy :destroy_calendar
   belongs_to :product, class_name: "Admin::Product"
   has_many :calendars, class_name: 'Calendar', dependent: :destroy
   validates :product_id, :count, :date_expiry, :time_expiry, presence: true
