@@ -1,17 +1,30 @@
 class CalendarController < ApplicationController
   before_action :set_time, only: [:show, :index]
   def index
+  begin
+    @points = []
+    @moja = session[:month_number]
+    @month = @time_now.month
+    @year = @time_now.year 
+    @cal = Calendar.find_by_year_and_month(@year, @month)
+    unless @cal.blank? then
+      @date = @cal.expiry_date.date_expiry
+      #date_expiry = Date.new()
+      @date_to_show = ExpiryDate.where(date_expiry: @date.beginning_of_month..@date.end_of_month)
+    end
+  rescue ActiveRecord::RecordNotFound
     @points = []
     @moja = session[:month_number]
     @month = @time_now.month
     @year = @time_now.year
-
+  end
   end
 
   def show
   	@moja = session[:month_number]
   	@month = @time_now.month
   	@year = @time_now.year
+    #@date_to_show = ExpiryDate.where(year: @year, month: @month)
   end
 
   private

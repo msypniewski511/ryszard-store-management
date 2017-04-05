@@ -31,8 +31,17 @@
         - if i == 0
           %tr
         - tab_day = dzien.split('|')
-        - if ((tab_day[0].to_i == Time.now.day) && tab_day[1] != "prev-month" && tab_day[1] !="next-month")
-          %td.current-day= tab_day[0]
+        /#########################################################################################################
+        /# Place where i change options to display
+        - @points = []
+        - @time_to_display = @time_now
+        - c = Calendar.where(month: @month)
+        - c.each do |cal|
+          - @points << cal.day
+        /#########################################################################################################
+        - if (@points.include?(tab_day[0].to_i) && tab_day[1] != "prev-month" && tab_day[1] !="next-month")
+          %td.expiry-date-current-month= tab_day[0]
+        
         - elsif ((i >= 5) && ((tab_day[1] != "prev-month") && (tab_day[1] != "next-month")))
           %td.weekend-day
             = tab_day[0]
@@ -65,5 +74,33 @@
         - @points << cal.day
       .month= data_month(@time_to_display.month)
     =render 'shared/callendar', time_to_display: @time_to_display
-= @points.inspect
+%hr
+%section.description
+  -if @date_to_show then
+    %div
+      %table
+        %thead
+          Products in this month:
+          %tr
+            %th Product name:
+            %th Part number:
+            %th Date of Expiry:
+            %th Action
+        %tbody
+        - @date_to_show.each do |datas|
+          %tr
+            %td
+              =datas.product.name
+            %td
+              =datas.part_number
+            %td
+              =datas.date_expiry
+            %td
+              Delete | Edit
+          %tr
+
+      
+
+
+
 

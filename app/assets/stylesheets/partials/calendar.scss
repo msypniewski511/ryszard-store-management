@@ -129,6 +129,12 @@ section#right {
   .next-month {
     color: #cacaca;
   }
+  /*************** Opis expiry dates ***********************/
+  .expiry-date-current-month {
+    background-color: #FFCCCC;
+    color: red;
+    font-weight: 700;
+  }
   .ring-left,
   .ring-right {
     position: absolute;

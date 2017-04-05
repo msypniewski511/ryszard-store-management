@@ -1,6 +1,5 @@
 class Calendar < ApplicationRecord
-  
-
+  belongs_to :expiry_date, class_name: 'ExpiryDate', foreign_key: "expiry_date_id"
 
   # Save expire period date into string
   def save_expiry_date_period(month, year, day, product_id, part_number)

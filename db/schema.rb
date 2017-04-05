@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170402202032) do
+ActiveRecord::Schema.define(version: 20170405063700) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,11 +56,12 @@ ActiveRecord::Schema.define(version: 20170402202032) do
   create_table "calendars", force: :cascade do |t|
     t.string   "month"
     t.integer  "year"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.string   "info"
     t.date     "expiry"
     t.integer  "day"
+    t.integer  "expiry_date_id"
   end
 
   create_table "expiry_dates", force: :cascade do |t|
