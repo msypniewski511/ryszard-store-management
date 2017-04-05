@@ -28,6 +28,7 @@ class ExpiryDatesController < ApplicationController
 
     respond_to do |format|
       if @expiry_date.save
+        ExpiryDate.last.create_callendar(ExpiryDate.last.id)
         flash.now[:notice] = "Expiry date was successfully created."
         @expiry_dates = ExpiryDate.all
         format.js {render :index}
@@ -47,6 +48,8 @@ class ExpiryDatesController < ApplicationController
   def update
     respond_to do |format|
       if @expiry_date.update(expiry_date_params)
+        id = ExpiryDate.find(params[:id]).id
+        ExpiryDate.last.change_calendar(id, params[:product_id])
         flash.now[:notice] = "Expiry date was successfully updated."
         @expiry_dates = ExpiryDate.all
         format.js {render :index}

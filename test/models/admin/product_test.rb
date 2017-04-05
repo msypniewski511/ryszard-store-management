@@ -9,7 +9,8 @@ class Admin::ProductTest < ActiveSupport::TestCase
   	assert product.invalid?
   	assert product.errors[:name].any?
   	assert product.errors[:category_id].any?
-  	assert product.errors[:subcategory_id].any?
+    # Subcategory dosen't require
+  	#assert product.errors[:subcategory_id].any?
   	assert product.errors[:company_id].any?
   	assert_not product.save
   end
