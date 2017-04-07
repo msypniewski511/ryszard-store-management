@@ -18,6 +18,6 @@
     %td= @admin_product.price
   %tr
     %td
-      = link_to 'Back', admin_products_path, remote: true |
-      = link_to 'Edit', edit_admin_product_path(@admin_product), remote: true
+      = link_to 'Back', admin_products_path, remote: true, class: "action" |
+      = link_to 'Edit', edit_admin_product_path(@admin_product), remote: true, class: "action"
     %td{colspan: 6}

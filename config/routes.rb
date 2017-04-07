@@ -1,14 +1,9 @@
 Rails.application.routes.draw do
   namespace :admin do
-    get 'analyzer/producs_company'
-  end
-
-  namespace :admin do
+    get 'analyzer/products_company'
     get 'analyzer/products_category'
-  end
-
-  namespace :admin do
     get 'analyzer/products_date'
+    get 'analyzer/products_by_expiry_date'
   end
 
   get 'admin/index', to: 'application#index'

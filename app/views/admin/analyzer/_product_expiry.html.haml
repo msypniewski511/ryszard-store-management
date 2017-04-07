@@ -1,0 +1,13 @@
+%tr
+  %td
+    = product_expiry.part_number
+  %td
+    = product_expiry.count
+  %td
+    = product_expiry.date_added.strftime("%Y-%d-%m")
+  %td 
+    = product_expiry.date_expiry.strftime("%Y-%d-%m")
+  %td
+    = product_expiry.time_expiry.to_s + "days"
+  %td 
+    = link_to(image_tag('delete.png'), expiry_dates_path(product_expiry), remote: true, title: 'Delete product from expiry allerts!')

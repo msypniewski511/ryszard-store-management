@@ -1,6 +1,6 @@
 %tr
   %td
-    = link_to(image_tag('analyzer-icon.png'), product, remote: true, title: "Analize product")
+    = link_to(image_tag('analyzer-icon.png'), admin_analyzer_products_by_expiry_date_path(id: "#{product.id}"), remote: true, title: "Analize product", class: "action")
     = link_to product.name, product, remote: true
   %td= product.description
   %td= product.company.name
@@ -8,8 +8,8 @@
   %td= product.subcategory.name
   %td= product.price
   %td
-    = link_to(image_tag('info.png'), product, remote: true, title: 'Show product')
+    = link_to(image_tag('info.png'), product, remote: true, title: 'Show product', class: "action")
     |
-    = link_to(image_tag('wrench.png'), edit_admin_product_path(product), remote: true, title: 'Edit')
+    = link_to(image_tag('wrench.png'), edit_admin_product_path(product), remote: true, title: 'Edit', class: "action")
     |
     = link_to(image_tag('stock-selection-none-16.png'), product, method: :delete, data: { confirm: "Are you sure to delete product: #{product.name} ?" }, remote: true, class: "destroy", title: "Delete product")

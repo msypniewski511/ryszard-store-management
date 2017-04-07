@@ -74,6 +74,14 @@ h3.form, #info {
   border-radius: 5px;
   padding: 5px 0 0 5px;
 }
+h3{
+  &.expiry {
+    @include gradient(red, white);
+  }
+  &.description {
+    @include gradient(#CCFFCC, #00FF00);
+  }
+}
 
 span.table_name {
   color: red;

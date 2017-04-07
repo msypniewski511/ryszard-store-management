@@ -1,6 +1,6 @@
 %p
   %b Product:
-  = @expiry_date.product_id
+  = Admin::Product.find(@expiry_date.product_id).name
 %p
   %b Part number:
   = @expiry_date.part_number
@@ -9,10 +9,10 @@
   = @expiry_date.count
 %p
   %b Date added:
-  = @expiry_date.date_added
+  = @expiry_date.date_added.strftime("%Y-%d-%m")
 %p
   %b Date expiry:
-  = @expiry_date.date_expiry
+  = @expiry_date.date_expiry.strftime("%Y-%d-%m")
 
 = link_to 'Edit', edit_expiry_date_path(@expiry_date), remote: true
 \|

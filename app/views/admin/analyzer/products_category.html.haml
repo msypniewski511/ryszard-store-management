@@ -1,2 +1,14 @@
-%h1 Admin::Analyzer#products_category
-%p Find me in app/views/admin/analyzer/products_category.html.haml
+%h3.description= @category.name
+%table
+  %thead
+    %tr
+      %th Name
+      %th Description
+      %th Company
+      %th Category
+      %th Subcategory
+      %th Price
+      %th{ colspan: 3 } Action
+
+  %tbody.index
+    = render partial: 'shared/product', collection: @products

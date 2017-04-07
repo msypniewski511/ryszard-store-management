@@ -3,7 +3,7 @@
   %td= expiry_date.part_number
   %td= expiry_date.count
   /%td= expiry_date.date_added.to_formatted_s(:long) 
-  %td= expiry_date.date_expiry.to_formatted_s(:long)
+  %td= expiry_date.date_expiry.strftime("%Y-%d-%m")
   %td= expiry_date.time_expiry.to_s + "days"
   %td
     =link_to(image_tag('edit.png'), edit_expiry_date_path(expiry_date), remote: true, title: 'Edit expiry date')

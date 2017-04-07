@@ -1,11 +1,11 @@
 %tr
   %td
-    = link_to(image_tag('analyzer-icon.png'), category, remote: true, title: 'Analyze category')
-    = link_to "#{category.name}", category, remote: true, title: 'show subcategories'
+    = link_to(image_tag('analyzer-icon.png'), admin_analyzer_products_category_path(id: "#{category.id}"), remote: true, title: 'Analyze category', class: "action")
+    = link_to "#{category.name}", category, remote: true, title: 'show subcategories', class: "action"
   %td= category.description
   %td
-    = link_to(image_tag('info.png'), category, remote: true, title: 'Show category info')
+    = link_to(image_tag('info.png'), category, remote: true, title: 'Show category info', class: "action")
     |
-    = link_to(image_tag('edit.png'), edit_admin_category_path(category), remote: true, title: 'Edit category')
+    = link_to(image_tag('edit.png'), edit_admin_category_path(category), remote: true, title: 'Edit category', class: "action")
     |
     = link_to(image_tag('delete.png'), category, method: :delete, data: { confirm: "Are you sure to delete category: #{category.name} ?" }, remote: true, class: "destroy", title: 'Delete category!')

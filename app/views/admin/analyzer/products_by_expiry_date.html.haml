@@ -1,0 +1,13 @@
+%h3.expiry= @product.name
+
+%table
+  %thead.expiry
+    %tr
+      %th Part number
+      %th Count
+      %th Date added
+      %th Date expiry
+      %th Expiry period
+      %th Actions
+  %tbody
+    =render partial: 'product_expiry', collection: @products_expiry

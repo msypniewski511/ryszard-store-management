@@ -1,9 +1,9 @@
 %tr
   %td
-    = link_to(image_tag('analyzer-icon.png'), admin_analyzer_producs_company_path(:company => "#{company.id}"), remote: true, title: 'Analyze products by company!')
-    = link_to "#{company.name}", company, remote: true
+    = link_to(image_tag('analyzer-icon.png'), admin_analyzer_products_company_path(:company => "#{company.id}"), remote: true, title: 'Analyze products by company!', class: "action")
+    = link_to "#{company.name}", company, remote: true, class: "action"
   %td
     = company.description
   %td
-    = link_to(image_tag('edit.png'), edit_admin_company_path(company), remote: true, title: 'edit')
+    = link_to(image_tag('edit.png'), edit_admin_company_path(company), remote: true, title: 'edit', class: "action")
     = link_to(image_tag('delete.png'), company, method: :delete, data: { confirm: "Are you sure to delete company: #{company.name} ?", remote: true }, class: "destroy", title: 'Delete!')

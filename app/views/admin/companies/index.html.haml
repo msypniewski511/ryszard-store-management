@@ -10,6 +10,6 @@
     = render partial: 'shared/company', collection: @admin_companies
     %tr
       %td
-        = link_to(image_tag('add_over.png'), new_admin_company_url, remote: true, title: 'Add company to database!')
-        = link_to 'New Company', new_admin_company_url, remote: true
+        = link_to(image_tag('add_over.png'), new_admin_company_url, remote: true, title: 'Add company to database!', class: "action")
+        = link_to 'New Company', new_admin_company_url, remote: true, class: "action"
       %td{colspan: 4}
