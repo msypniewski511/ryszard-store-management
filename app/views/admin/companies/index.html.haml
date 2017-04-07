@@ -7,17 +7,9 @@
       %th{ colspan: 3 } Action
 
   %tbody.index
-    - @admin_companies.each do |company|
-      %tr
-        %td= company.name
-        %td= company.description
-        %td
-          = link_to 'Show', company, remote: true
-          |
-          = link_to 'Edit', edit_admin_company_path(company), remote: true
-          |
-          = link_to 'Destroy', company, method: :delete, data: { confirm: "Are you sure to delete company: #{company.name} ?", remote: true }, class: "destroy"
+    = render partial: 'shared/company', collection: @admin_companies
     %tr
       %td
+        = link_to(image_tag('add_over.png'), new_admin_company_url, remote: true, title: 'Add company to database!')
         = link_to 'New Company', new_admin_company_url, remote: true
       %td{colspan: 4}

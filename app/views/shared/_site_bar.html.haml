@@ -3,12 +3,17 @@
   %hr
   %ul.nav
     %li#database_list
-      = link_to "Products", admin_products_path, remote: true
+      = link_to "Products", admin_products_path, remote: true, title: 'Show listing of products'
+      = link_to(image_tag('add_over.png'), new_admin_product_url, remote: true, title: 'Add new product to database!', class: 'action_img_nav' )
     %li#database_list
-      = link_to "Company", admin_companies_path, remote: true
+      = link_to "Company", admin_companies_path, remote: true, title: 'Listing of companies'
+      = link_to(image_tag('add_over.png'), new_admin_company_url, remote: true, title: 'Add new company to database!', class: 'action_img_nav' )
     %li#database_list
-      = link_to "Categories", admin_categories_path, remote: true
+      = link_to "Categories", admin_categories_path, remote: true, title: 'Listing of categories'
+      = link_to(image_tag('add_over.png'), new_admin_category_url, remote: true, title: 'Add new category to database!', class: 'action_img_nav' )
     %li#database_list
-      = link_to "Subcategories", admin_subcategories_path, remote: true
+      = link_to "Subcategories", admin_subcategories_path, remote: true, title: 'Listing of Subcategories'
+      = link_to(image_tag('add_over.png'), new_admin_subcategory_url, remote: true, title: 'Add new subcategory to database!', class: 'action_img_nav' )
     %li#database_list
-      = link_to "Expiry Dates", expiry_dates_path, remote: true
+      = link_to "Expiry Dates", expiry_dates_path, remote: true, title: 'Listing of expiries date'
+      = link_to(image_tag('add_over.png'), new_expiry_date_path, remote: true, title: 'Add new expiry date to database!', class: 'action_img_nav' )

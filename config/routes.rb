@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'analyzer/producs_company'
+  end
+
+  namespace :admin do
+    get 'analyzer/products_category'
+  end
+
+  namespace :admin do
+    get 'analyzer/products_date'
+  end
+
   get 'admin/index', to: 'application#index'
   get 'calendar/index'
   get 'calendar/show'

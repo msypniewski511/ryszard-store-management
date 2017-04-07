@@ -40,7 +40,8 @@
           - @points << cal.day
         /#########################################################################################################
         - if (@points.include?(tab_day[0].to_i) && tab_day[1] != "prev-month" && tab_day[1] !="next-month")
-          %td.expiry-date-current-month= tab_day[0]
+          %td.expiry-date-current-month
+            = link_to("#{tab_day[0]}", "", title: "#{Admin::Product.find(Calendar.find_by_day(tab_day[0]).info).name}")
         
         - elsif ((i >= 5) && ((tab_day[1] != "prev-month") && (tab_day[1] != "next-month")))
           %td.weekend-day

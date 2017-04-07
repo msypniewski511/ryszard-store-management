@@ -23,6 +23,9 @@ section#side_bar {
   a {
     color: blue;
     text-decoration: none;
+    &.action_img_nav {
+      float: right;
+    }
   }
   a.delete {
     float: right;
@@ -30,6 +33,7 @@ section#side_bar {
   a:hover {
     color: white;
   }
+
   h3.action a{
     color: white;
   }

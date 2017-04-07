@@ -1,5 +1,5 @@
 class Admin::Product < ApplicationRecord
-  has_many :expiry_dates, class_name: "ExpiryDate"
+  has_many :expiry_dates, class_name: "ExpiryDate", dependent: :destroy
   belongs_to :company, class_name: "Admin::Company"
   belongs_to :category, class_name: "Admin::Category"
   belongs_to :subcategory, class_name: "Admin::SubCategory"
