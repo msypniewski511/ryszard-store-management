@@ -119,3 +119,11 @@ span.database_name {
     list-style: none;
   }
 }
+/************* tooltip *******************/
+.tooltip {
+  width: 25%;
+  padding: 5px;
+  background-color: white;
+  border: 3px solid red;
+  border-radius: 5px;
+}
