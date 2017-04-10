@@ -99,9 +99,23 @@
             %td
               Delete | Edit
           %tr
-
-      
-
+.tooltip
+  -if @date_to_show then
+    %div
+      %table
+        %thead
+          Products in this month:
+          %tr
+            %th Product name:
+            %th Date of Expiry:
+        %tbody
+        - @date_to_show.each do |datas|
+          %tr
+            %td
+              =datas.product.name
+            %td
+              =datas.date_expiry
+          %tr
 
 
 
