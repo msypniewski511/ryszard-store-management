@@ -41,7 +41,9 @@ section#side_bar {
 /* clear floats on the footer to sits it at bottom of the page */
 footer#site_footer {
   clear: both;
-  width: 100%;
+  position: fixed;
+  width: 76%;
   display: block;
   text-align: center;
+  bottom: 0;
 }

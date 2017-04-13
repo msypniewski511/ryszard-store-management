@@ -1,0 +1,26 @@
+      
+      var ttleft;
+      var ttTop;
+      var $this = $(this);
+      var $tip = $($this.attr('data-tooltip'));
+      var triggerPos = $this.offset();
+      var triggerH = $this.outerHeight();
+      var triggerW = $this.outerWidth();
+      var tipW = $tip.outerWidth();
+      var tipH = $tip.outerHeight();
+      var screenW = $(window).width();
+      var scrollTop = $(document).scrollTop();
+      if (triggerPos.top - tipH - scrollTop > 0 ) {
+        ttTop = triggerPos.top - tipH - 10;
+      } else {
+        ttTop = triggerPos.top + triggerH +10 ;
+      }
+      var overFlowRight = (triggerPos.left + tipW) - screenW;
+      if (overFlowRight > 0) {
+        ttLeft = triggerPos.left - overFlowRight - 10;
+      } else {
+        ttLeft = triggerPos.left;
+      }
+      $($tip).css({
+        left: ttLeft, top: ttTop, position: 'absolute'
+      }).fadeIn(200);

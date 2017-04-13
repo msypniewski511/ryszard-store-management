@@ -10,6 +10,7 @@ class CalendarController < ApplicationController
     unless @cal.blank? then
       @date = @cal.expiry_date.date_expiry
       #date_expiry = Date.new()
+      # Variable with expiry days on particular month
       @date_to_show = ExpiryDate.where(date_expiry: @date.beginning_of_month..@date.end_of_month)
     end
   rescue ActiveRecord::RecordNotFound

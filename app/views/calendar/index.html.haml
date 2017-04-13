@@ -1,24 +1,25 @@
-%script type="text/javascript"
-
 :javascript
   $('document').ready(function(){
-  	$('.tooltip').hide();
+
+    $('.tooltip').hide();
     $('.expiry-date-current-month').mouseover(function(){
-      var $tooltip = $('.tooltip')
+      var $this=$(this);
+      var tip = $($this).attr('id');
+      var $tip = $($this.attr('id'));
+
       var ttleft;
       var ttTop;
-      var $this = $(this);
       var triggerPos = $this.offset();
       var triggerH = $this.outerHeight();
       var triggerW = $this.outerWidth();
-      var tipW = $tooltip.outerWidth();
-      var tipH = $tooltip.outerHeight();
+      var tipW = $("div[id=" + tip + "]").outerWidth();
+      var tipH = $("div[id=" + tip + "]").outerHeight();
       var screenW = $(window).width();
       var scrollTop = $(document).scrollTop();
       if (triggerPos.top - tipH - scrollTop > 0 ) {
         ttTop = triggerPos.top - tipH - 10;
       } else {
-        ttTop = triggerPos.top + triggerH +10 ;
+        ttTop = triggerPos.top + triggerH + 10 ;
       }
       var overFlowRight = (triggerPos.left + tipW) - screenW;
       if (overFlowRight > 0) {
@@ -26,19 +27,19 @@
       } else {
         ttLeft = triggerPos.left;
       }
-      $('.tooltip').css({
+      $("div[id=" + tip + "]").css({
         left: ttLeft, top: ttTop, position: 'absolute'
       }).fadeIn(200);
     });// End mouseover function
     $('.expiry-date-current-month').mouseout(function () {
-    	$('.tooltip').fadeOut(200);
+      $('.tooltip').fadeOut(200);
     }); // koniec funkcji mouseout
   });
 
 /Article
 %article.main_content
   %header.main_content_header
-    %h2 Kalendar.
+    %h2 Calendar.
     Teraz jest: 
     = Time.now
   %div#main_content
