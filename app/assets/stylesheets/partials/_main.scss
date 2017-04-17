@@ -46,6 +46,8 @@ header, footer {
     color: #CCFFFF;
   }
 }
+
+/*************** Heder ************************************/
 header.main_content_header {
   @include gradient($lith-body-aqua, $darker-color-header);
 }
@@ -89,7 +91,7 @@ span.table_name {
 span.database_name {
   color: orange;
 }
-/*#########################################################*/
+/*################# Notice ###########################*/
 #notice {
   color: green;
   background-color: #00CC66;
@@ -102,7 +104,7 @@ span.database_name {
   background-color: red;
   display: inline;
 }
-
+/**************** Error explanation ****************/
 #error_explanation {
   width: 400px;
   border: 2px solid red;
