@@ -10,4 +10,4 @@
   %td
     = product_expiry.time_expiry.to_s + "days"
   %td 
-    = link_to(image_tag('delete.png'), expiry_dates_path(product_expiry), remote: true, title: 'Delete product from expiry allerts!')
+    = link_to(image_tag('delete.png'), expiry_date_path(product_expiry), remote: true, title: 'Delete product from expiry allerts!', method: :delete)

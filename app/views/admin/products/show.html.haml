@@ -1,23 +1,24 @@
-%h3= @admin_product.name
+%h3.description= @admin_product.name
 %table.show
   %tr
     %th Name
-    %th Description
     %th Company
     %th Category
     %th Subcategory
-    %th Image url
     %th Price
   %tr
     %td= @admin_product.name
-    %td= @admin_product.description
     %td= @admin_product.company.name
     %td= @admin_product.category.name
     %td= @admin_product.subcategory.name
-    %td= @admin_product.image_url
     %td= @admin_product.price
+-unless @admin_product.image.nil? then
+  = image_tag @admin_product.image.url      
+-unless @admin_product.description == "" then
+  = textilize(@admin_product.description)
+-else
+  Brak opisu.
   %tr
-    %td
-      = link_to 'Back', admin_products_path, remote: true, class: "action" |
-      = link_to 'Edit', edit_admin_product_path(@admin_product), remote: true, class: "action"
-    %td{colspan: 6}
+%hr
+= link_to 'Back', admin_products_path, remote: true, class: "action" |
+= link_to 'Edit', edit_admin_product_path(@admin_product), remote: true, class: "action"

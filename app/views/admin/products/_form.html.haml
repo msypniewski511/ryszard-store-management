@@ -1,4 +1,4 @@
-= form_for(@admin_product,  remote: true) do |f|
+= form_for(@admin_product, multipart: true, authenticity_token: true, remote: true) do |f|
   - if @admin_product.errors.any?
     #error_explanation
       %h2= "#{pluralize(@admin_product.errors.count, "error")} prohibited this category from being saved:"
@@ -10,7 +10,7 @@
     = f.text_field :name
   .field
     = f.label :description
-    = f.text_field :description
+    = f.text_area :description
   .field
     = f.label :company
     = f.collection_select(:company_id, Admin::Company.all, :id, :name)
@@ -23,9 +23,9 @@
   .field
     = f.label :price
     = f.text_field :price
-  .field
-    = f.label :image_url
-    = f.text_field :image_url
     /= f.number_field :category_id
+  .field
+    = f.label :image, "Wybierz obraz"
+    = f.file_field :image
   .action
     = f.submit

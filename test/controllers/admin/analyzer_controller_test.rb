@@ -2,7 +2,7 @@ require 'test_helper'
 
 class Admin::AnalyzerControllerTest < ActionDispatch::IntegrationTest
   test "should get producs_company" do
-    get admin_analyzer_producs_company_url
+    get admin_analyzer_products_company_path
     assert_response :success
   end
 
