@@ -32,6 +32,9 @@ gem 'will_paginate'
 gem "paperclip"
 gem 'remotipart'
 gem 'textilize'
+gem 'ferret'
+gem 'acts_as_ferret', '>= 0.5'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

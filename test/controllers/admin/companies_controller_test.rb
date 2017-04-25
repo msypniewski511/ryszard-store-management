@@ -31,7 +31,7 @@ class Admin::CompaniesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show company" do
-    get admin_company_url(@admin_company)
+    get admin_company_url(@admin_company.id)
     assert_response :success
     assert_select "h3", "#{@admin_company.name}"
   end

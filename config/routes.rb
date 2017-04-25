@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'catalog/index'
+  get 'catalog/show/:id', to: 'catalog#show', as: 'catalog_show'
+
+  get 'catalog/search'
+
+  get 'catalog/news'
+
   namespace :admin do
     get 'analyzer/products_company'
     get 'analyzer/products_category'

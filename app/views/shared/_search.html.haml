@@ -1,0 +1,21 @@
+:javascript
+  $(document).ready(function(){
+  	$("tr[data-link]").click(function() {
+  	  var cos = this.attr("data-link");
+  	  alert(cos)
+      
+    });
+  });
+-if notice
+  %p#notice
+    = "#{notice}"
+#product_list
+  = render partial: 'search_box'
+  - if @products_search
+    %p
+      = "Wyszukiwanie dla: \"" + params[:query] + "\" dalo wynik:"
+    %hr
+    %table#product_list
+      %tbody
+        = render partial: 'shared/products', collection: @products_search
+        %tr= link_to 'Catalog', catalog_index_path
