@@ -1,14 +1,15 @@
 %h1.catalog= @title
 %h2.catalog= @category.name
 = image_tag(@product.image)
-%dl
-  %dt Cena:
+%dl#catalog_show
+  %dt
+    %b Cena:
   %dd= sprintf("%0.2f", @product.price) + " pln"
-  %dt Firma:
+  %dt
+    %b Firma:
   %dd= @company.name
   %dt Opis produktu:
   %dd= textilize @product.description
 %hr
 %p
-  =link_to "Powrot do catalogu", catalog_index_path(page: params[:page])
-  = link_to 'Back', :back
+  = link_to 'Powrot', :back

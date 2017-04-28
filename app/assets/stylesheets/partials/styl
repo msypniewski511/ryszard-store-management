@@ -1,0 +1,104 @@
+
+/*********** Layout for catalog **************/
+/* float left the article section */
+section#main_content {
+  border-radius: 5px;
+  background-color: white;
+  float: right;
+  width: 73%;
+  td.description {
+    text-align: left;
+    color: black;
+  }
+}
+}
+}
+
+section#side_bar_catalog {
+  float: left;
+  width: 25%;
+  background-color: white;
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  h2 {
+    text-align: left;
+    color: blue;
+  }
+  div#category {
+    padding: 5px;
+  }
+  ul {
+    width: 100%;
+    li {
+      background-color: #DDDDDD;
+      border-radius: 5px;
+      padding: 5px;
+      margin-bottom: 2px;
+    }
+    li:hover {
+      background-color: aqua;
+    }
+  }
+  a {
+    color: blue;
+    text-decoration: none;
+    &.action_img_nav {
+      float: right;
+    }
+  }
+  a.delete {
+    float: right;
+  }
+  a:hover {
+    color: white;
+  }
+
+  h3 {
+    .action a{
+      color: white;
+    }
+  }
+}
+
+section#cart {
+  margin-top: 8px;
+  div#cart {
+    padding: 5px;
+    h3 {
+      background-color: white;
+    }
+  }
+  float: left;
+  width: 25%;
+  background-color: white;
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  ul {
+    width: 100%;
+    li#database_list {
+      background-color: white;
+      border: 1px solid blue;
+      border-radius: 5px;
+      padding: 2px 5px 2px 5px;
+      margin-bottom: 2px;
+    }
+    li#database_list:hover {
+      background-color: red;
+    }
+  }
+  a {
+    color: blue;
+    text-decoration: none;
+    &.action_img_nav {
+      float: right;
+    }
+  }
+  a.delete {
+    float: right;
+  }
+  a:hover {
+    color: white;
+  }
+}

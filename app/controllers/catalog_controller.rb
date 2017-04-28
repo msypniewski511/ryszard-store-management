@@ -2,7 +2,8 @@ class CatalogController < ApplicationController
   def index
   	@title = "Product List"
   	@size = Admin::Product.count
-  	@products = Admin::Product.order(name: :ASC).paginate(per_page: 5, :page => params[:page])
+  	@products = Admin::Product.order(name: :ASC).paginate(per_page: 10, :page => params[:page])
+    @categories = Admin::Category.all
   end
 
   def show

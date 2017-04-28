@@ -1,3 +1,88 @@
-h1.catalog {
-  font-size: 38px;
+h1.catalog_title {
+  font-size: 20px;
+  font-weight: bolder;
+  padding: 5px;
+}
+h3.tytul {
+  font-size: 18px;
+  font-weight: bolder;
+  text-align: left;
+  color: black;
+  background: none;
+}
+dt {
+  font-weight: bolder;
+}
+div#container_outside {
+  width: 98%;
+  background-color: #CCFFFF;
+  border-radius: 8px;
+  padding: 8px;
+  margin-bottom: 10px;
+  div#container_inside {
+    overflow: auto;
+    width: 98%;
+    background-color: white;
+    border-radius: 8px;
+    padding: 8px;
+    div#main_content {
+      float: right;
+      width: 70%;
+      .product_list {
+        align: center;
+        text-align: center;
+        background-color: #BBBBBB;
+        border-radius: 5px;
+        padding: 5px;
+        margin: 5px;
+        margin-bottom: 10px;
+        width: 16%;
+        float: left;
+        margin-bottom: 3px;
+        div.image_container {
+          background-color: white;
+          padding: 3px;
+          border-radius: 5px;
+        }
+        .list_image {
+          align: center;
+          width: 90px;
+          height: 90px;
+        }
+        &:hover {
+          background-color: red;
+        }
+      }
+    }
+    div#side_bar_catalog {
+    width: 25%;
+      ul li {
+        background-color: #DDDDDD;
+        border-radius: 5px;
+        margin-bottom: 3px;
+        padding: 5px;
+        &:hover {
+          background-color: #99FFFF;
+        }
+      }
+    }
+    div#cart {
+      width: 24%;
+      border-radius: 5px;
+      padding: 5px;
+      margin-top: 20px;
+      background-color: #0099FF;
+      hr.cart{
+        line: 1px dotted white;
+      }
+    }
+  }
+}
+
+/* clear floats on the footer to sits it at bottom of the page */
+footer#site_footer {
+  clear: both;
+  width: 960px;
+  text-align: center;
+  margin-top: 10px;
 }

@@ -1,0 +1,18 @@
+      %article.post_catalog
+        =render partial: 'contenet'
+      %section#side_bar_catalog
+  %div#category
+    %nav#catalog
+      %h2 Kategorie
+      %ul
+        - @categories.each do |category|
+          %li
+            %span.categories= category.name
+      %section#cart
+        %div#cart
+          %h2 Zawartosc koszyka
+          Zawartosc koszyka:
+          %br
+          ! element
+          %br
+          2 element

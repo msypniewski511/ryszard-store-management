@@ -1,26 +1,21 @@
 -provide title: @title
-%h3
-  = @title
-  =@size
-=render partial: 'shared/search'
-%dl#products
-  = will_paginate @products
-  - @products.each do |product|
-    %dt
-      %h3.description
-        = link_to "#{product.name}", catalog_show_path(product.id, page: params[:page])
-      %dd= product.company.name
-      %dd= product.category.name
-      %dd= product.subcategory.name
-      %dd
-        %small= "#{sprintf("%.2f", product.price)} pln"
-      -unless product.image.nil? then
-        = link_to(image_tag(product.image.url), catalog_show_path(product.id, page: params[:page]))     
-      -unless product.description == "" then
-        = textilize(product.description)
-  =will_paginate @products
-%br
-
-%br
-%br
-%br
+=render partial: 'shared/page_header'
+%div#container_outside
+  %div#container_inside
+    %div#main_content
+      =render partial: 'contenet'
+    %div#side_bar_catalog
+      =render partial: 'side_bar_catalog'
+    %div#cart
+      %h1
+        Koszyk:
+      %br
+      Brak produktow
+      %hr.cart
+      %br
+      Wyslanych: 0
+      %br
+      Razem:     0
+      %br
+      %button Zamow
+        

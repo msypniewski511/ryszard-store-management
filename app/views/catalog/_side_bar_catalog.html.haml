@@ -1,0 +1,5 @@
+%h1.catalog_title Kategorie
+%ul
+  - @categories.each do |category|
+    %li
+      %span.categories= category.name

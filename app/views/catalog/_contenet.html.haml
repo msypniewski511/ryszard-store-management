@@ -1,0 +1,16 @@
+%h1.catalog_title
+  =@title
+  =@size
+=render partial: 'shared/search'
+%hr
+= will_paginate @products
+- @products.each do |product|
+  %div.product_list
+    %div.image_container
+      =link_to((image_tag product.image, class: 'list_image'), catalog_show_path(product.id, page: params[:page]))
+    %br
+    = product.name
+    %br
+    = product.price.to_s + " pln"
+    %br
+    %button Do koszyka
