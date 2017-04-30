@@ -29,11 +29,13 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'haml-rails', '~> 0.9.0'
 gem 'will_paginate'
-gem "paperclip"
 gem 'remotipart'
 gem 'textilize'
 gem 'ferret'
 gem 'acts_as_ferret', '>= 0.5'
+gem 'paperclip'
+gem 'aws-sdk', '~> 2.9', '>= 2.9.14'
+
 
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
