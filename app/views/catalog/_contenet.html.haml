@@ -7,7 +7,11 @@
 - @products.each do |product|
   %div.product_list
     %div.image_container
-      =link_to((image_tag product.image.url(:medium), class: 'list_image'), catalog_show_path(product.id, page: params[:page]))
+      -if product.picture? then
+        =link_to((image_tag product.picture.url, class: 'list_image'), catalog_show_path(product.id, page: params[:page]))
+      -else
+        =link_to((image_tag 'missing.png', class: 'list_image'), catalog_show_path(product.id, page: params[:page]))
+      /=link_to((image_tag product.picture.url if product.picture?), class: 'list_image', catalog_show_path(product.id, page: params[:page]))
     %br
     = product.name
     %br

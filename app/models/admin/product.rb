@@ -4,6 +4,8 @@ class Admin::Product < ApplicationRecord
   belongs_to :category, class_name: "Admin::Category"
   belongs_to :subcategory, class_name: 'Admin::SubCategory', :foreign_key => "subcategory_id"
 
+  mount_uploader :picture, PictureUploader
+  
   # Paperclip
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "missing.png"
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
@@ -14,8 +16,16 @@ class Admin::Product < ApplicationRecord
   validates :price, numericality: {greater_than_or_equal_to: 0.01}
   validates :image_url, allow_blank: true, format: { with: %r{\.(gif|jpg|png)\Z}i, message: 'must be a URL for GIF, JPG or PNG image.' }
   acts_as_ferret :fields => [:name]
+  validate :picture_size
 
-  def self.count
-    Admin::Product.all.size
-  end
+  private
+    # Validates the size of an uploaded picture.
+    def picture_size
+      if picture.size > 5.megabytes
+        errors.add(:picture, "should be less than 5MB")
+      end
+    end 
+    def self.count
+      Admin::Product.all.size
+    end
 end

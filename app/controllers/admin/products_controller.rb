@@ -2,6 +2,7 @@ class Admin::ProductsController < ApplicationController
   before_action :set_products, only: [:destroy, :create, :update]
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :set_sort, only: :index
+  #before_action :set_s3_direct_post, only: [:new, :edit, :create, :update]
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
 
   # GET /products
@@ -76,6 +77,9 @@ class Admin::ProductsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def set_s3_direct_post
+      @s3_direct_post = S3_BUCKET.presigned_post(key: "uploads/#{SecureRandom.uuid}/${filename}", success_action_status: '201', acl: 'public-read')
+    end
     def set_product
       @admin_product = Admin::Product.find(params[:id])
     end
@@ -86,7 +90,7 @@ class Admin::ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_product_params
-      params.require(:admin_product).permit(:name, :description, :company_id, :category_id, :subcategory_id, :price, :image)
+      params.require(:admin_product).permit(:name, :description, :company_id, :category_id, :subcategory_id, :price, :picture)
     end
 
     def not_found

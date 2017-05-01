@@ -12,8 +12,8 @@
     %td= @admin_product.category.name
     %td= @admin_product.subcategory.name
     %td= @admin_product.price
--unless @admin_product.image.nil? then
-  = image_tag @admin_product.image.url      
+-if @admin_product.picture? then
+  = image_tag @admin_product.picture.url      
 -unless @admin_product.description == "" then
   = textilize(@admin_product.description)
 -else

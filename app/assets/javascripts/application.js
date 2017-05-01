@@ -16,3 +16,5 @@
 //= require_tree .
 //= require jquery.remotipart
 //= require admin/products
+//= require jquery.ui.widget
+//= require z.jquery.fileupload

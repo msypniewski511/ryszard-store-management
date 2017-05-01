@@ -35,6 +35,9 @@ gem 'ferret'
 gem 'acts_as_ferret', '>= 0.5'
 gem 'paperclip'
 gem 'aws-sdk', '~> 2.9', '>= 2.9.14'
+gem 'carrierwave',             '0.11.2'
+gem 'mini_magick',             '4.5.1'
+gem 'fog',                     '1.38.0'
 
 
 # Use Redis adapter to run Action Cable in production

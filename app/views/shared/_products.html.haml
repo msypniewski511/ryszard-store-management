@@ -1,6 +1,9 @@
 %tr{data: {link: "#{catalog_show_path(products.id)}"}}
   %td.image
-    =image_tag products.image, class: 'list_image'
+    - if products.picture? then
+      =image_tag products.picture.url, class: 'list_image'
+    - else
+      =image_tag 'missing.png', class: 'list_image'
   %td.list_description
     %dl
       %dt= products.name
