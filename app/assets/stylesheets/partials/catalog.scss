@@ -13,16 +13,29 @@ h3.tytul {
 dt {
   font-weight: bolder;
 }
+img.tlo{
+  width: 100%;
+}
+body {
+  background-image: url('obraz.jpg');
+  background-repeat: repeat-y;
+  background-position: 50% top;
+  background-size: cover;
+}
+
 div#container_outside {
   width: 98%;
-  background-color: #CCFFFF;
+  background-color: rgba(0, 255, 255, 0.5);
+  /*background: rgba(140, 202, 242, 0.5);*/
   border-radius: 8px;
   padding: 8px;
+  opacity: 0.9;
   margin-bottom: 10px;
   div#container_inside {
     overflow: auto;
     width: 98%;
     background-color: white;
+    opacity: 1;
     border-radius: 8px;
     padding: 8px;
     div#main_content {
@@ -33,21 +46,21 @@ div#container_outside {
         text-align: center;
         background-color: #BBBBBB;
         border-radius: 5px;
-        padding: 5px;
+        padding: 10px;
         margin: 5px;
         margin-bottom: 10px;
-        width: 16%;
+        width: 28%;
         float: left;
         margin-bottom: 3px;
         div.image_container {
           background-color: white;
-          padding: 3px;
+          padding: 20px;
           border-radius: 5px;
         }
         .list_image {
           align: center;
-          width: 90px;
-          height: 90px;
+          width: 100px;
+          height: 100px;
         }
         &:hover {
           background-color: red;
@@ -76,6 +89,24 @@ div#container_outside {
         line: 1px dotted white;
       }
     }
+    div#new {
+      text-align: center;
+      width: 23%;
+      border: 2px solid #0099FF;
+      border-radius: 5px;
+      padding: 8px;
+      margin-top: 20px;
+      background-color: white;
+      hr.cart{
+        line: 1px dotted white;
+      }
+      .new_image {
+        text-align: center;
+        align: right;
+        width: 80%;
+        height: 100%;
+      }
+    }
   }
 }
 
@@ -85,4 +116,23 @@ footer#site_footer {
   width: 960px;
   text-align: center;
   margin-top: 10px;
+  marig-bottom: 20px;
+}
+header#catalog_header{
+  /*background: rgba(140, 202, 242, 0.5);*/
+  color: rgba(0, 0, 0, 0.9);
+  margin-top: 100px;
+  overflow: auto;
+  div#search {
+    opacity: 1.0;
+    float: right;
+    padding: 5px;
+  }
+  div#title {
+    float: left;
+    padding: 5px;
+  }
+  span.content{
+    color: black;
+  }
 }

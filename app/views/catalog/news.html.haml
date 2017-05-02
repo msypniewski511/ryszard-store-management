@@ -1,2 +1,34 @@
-%h1 Catalog#news
-%p Find me in app/views/catalog/news.html.haml
+-provide title: @title
+=render partial: 'shared/page_header'
+%div#container_outside
+  %div#container_inside
+    %div#main_content
+      - @products.each do |product|
+        %div.product_list
+          %div.image_container
+            -if product.picture? then
+              =link_to((image_tag product.picture.url, class: 'list_image'), catalog_show_path(product.id, page: params[:page]))
+            -else
+              =link_to((image_tag 'missing.png', class: 'list_image'), catalog_show_path(product.id, page: params[:page]))
+            %br
+            = product.name
+            %br
+            = product.price.to_s + " pln"
+            %br
+            %button Do koszyka
+    %div#side_bar_catalog
+      =render partial: 'side_bar_catalog'
+    %div#cart
+      %h1
+        Koszyk:
+      %br
+      Brak produktow
+      %hr.cart
+      %br
+      Wyslanych: 0
+      %br
+      Razem:     0
+      %br
+      %button Zamow
+    %div#new
+      =link_to "Powrot", :back

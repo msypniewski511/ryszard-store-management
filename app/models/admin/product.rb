@@ -28,4 +28,8 @@ class Admin::Product < ApplicationRecord
     def self.count
       Admin::Product.all.size
     end
+
+    def self.latest
+      Admin::Product.last(5)
+    end
 end

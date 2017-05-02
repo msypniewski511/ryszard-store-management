@@ -5,6 +5,12 @@ class BroswingAndSearchingTest < ActionDispatch::IntegrationTest
   #   assert true
   # end
 
+  test "show new products" do
+    get catalog_news_path
+    assert_response :success
+    assert_template 'catalog/news'
+  end
+
   test "broswing the site" do
   	maciej = enter_site(:maciej)
   	maciej.broswe_index
@@ -25,8 +31,7 @@ class BroswingAndSearchingTest < ActionDispatch::IntegrationTest
 
       assert_response :success
       assert_template 'catalog/index'
-      assert_select 'dl'
-      assert_select 'dt'
+      assert_select 'div'
       check_product_links
     end
   
@@ -51,7 +56,7 @@ class BroswingAndSearchingTest < ActionDispatch::IntegrationTest
 
   def check_product_links
     for product in assigns(:products)
-      assert_select 'a', 'href'
+      assert_select 'a'
     end
   end
 end

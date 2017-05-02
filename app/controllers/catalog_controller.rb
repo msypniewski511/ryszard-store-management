@@ -1,9 +1,10 @@
 class CatalogController < ApplicationController
   def index
-  	@title = "Product List"
+  	@title = "Lista produktow"
   	@size = Admin::Product.count
-  	@products = Admin::Product.order(name: :ASC).paginate(per_page: 10, :page => params[:page])
+  	@products = Admin::Product.order(name: :ASC).paginate(per_page: 9, :page => params[:page])
     @categories = Admin::Category.all
+    @product = Admin::Product.last
   end
 
   def show
@@ -18,7 +19,7 @@ class CatalogController < ApplicationController
   end
 
   def search
-    @title = "Search"
+    @title = "Szukaj"
     if params[:commit] == "Szukaj" || params[:query]
       regex = "^#{params[:query]}+"
       @products = Admin::Product.where("name ~* ?", regex)
@@ -31,5 +32,8 @@ class CatalogController < ApplicationController
   end
 
   def news
+    @title = "Nowosci"
+    @products = Admin::Product.latest
+    @categories = Admin::Category.all
   end
 end

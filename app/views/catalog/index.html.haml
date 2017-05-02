@@ -1,5 +1,7 @@
 -provide title: @title
-=render partial: 'shared/page_header'
+%div.nag
+  
+  =render partial: 'shared/page_header'
 %div#container_outside
   %div#container_inside
     %div#main_content
@@ -7,7 +9,7 @@
     %div#side_bar_catalog
       =render partial: 'side_bar_catalog'
     %div#cart
-      %h1
+      %h1.catalog_title
         Koszyk:
       %br
       Brak produktow
@@ -18,4 +20,7 @@
       Razem:     0
       %br
       %button Zamow
+    %div#new
+      =render partial: 'show_last'
+%hr
         

@@ -1,4 +1,9 @@
 %header#catalog_header
-  %nav
-    NAGLOWEK
+  %div#title
+    -if @title then
+      %span.content= @title
+  %div#search
+   
+    =render partial: 'shared/search'
+
 %hr

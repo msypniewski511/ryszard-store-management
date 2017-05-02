@@ -1,0 +1,16 @@
+%h1.catalog_title Nowosci w ofercie
+%h3= @product.name
+%br
+= image_tag @product.picture, class: 'new_image'
+%dl#catalog_show
+  %dt
+    %br
+    %b Cena:
+  %dd= sprintf("%0.2f", @product.price) + " pln"
+  %dt
+  %br
+  %dt Opis produktu:
+  %dd= textilize @product.description
+%hr
+%p
+  = link_to 'Pokaz wszystkie', catalog_news_path

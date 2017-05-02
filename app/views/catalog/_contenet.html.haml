@@ -1,7 +1,6 @@
 %h1.catalog_title
   =@title
   =@size
-=render partial: 'shared/search'
 %hr
 = will_paginate @products
 - @products.each do |product|
@@ -18,3 +17,4 @@
     = product.price.to_s + " pln"
     %br
     %button Do koszyka
+= will_paginate @products
