@@ -51,6 +51,14 @@ table {
       color: $body-color-aqua;
     }
   }
+  tr {
+    &.in_period {
+      background-color: pink;
+    }
+    &.after_period {
+      background-color: red;
+    }
+  }
   tr:hover {
     background-color: #00FF99;
   }

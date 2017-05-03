@@ -1,0 +1,5 @@
+%fieldset
+  %legend
+    = "New Product in #{Admin::Company.find(@company_id).name} company"
+  = render 'form_object'
+= link_to 'Back', admin_products_path, remote: true

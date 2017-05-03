@@ -1,0 +1,11 @@
+%fieldset
+  %legend= "Decrese product #{@product.name} count."
+  =form_tag expiry_dates_product_change_count_path(id: @expiry_date.id), method: :post do
+    .field
+      =label_tag 'Obecna ilość: '
+      =label_tag "#{@expiry_date.count}"
+    .field
+      =label_tag :count, 'Podaj ilość: '
+      =number_field_tag :count
+    .action
+      =submit_tag

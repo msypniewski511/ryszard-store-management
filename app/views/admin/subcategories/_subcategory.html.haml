@@ -5,6 +5,7 @@
   %td= subcategory.description
   %td= subcategory.category.name
   %td
+    = link_to(image_tag('add_over.png'), admin_products_new_sub_category_path(subcategory_id: subcategory.id), remote:true, title: "Add product to #{subcategory.name}")
     = link_to(image_tag('info.png'), admin_subcategory_path(subcategory), remote: true, title: 'Show info')
     |
     = link_to(image_tag('edit.png'), edit_admin_subcategory_path(subcategory), remote: true, title: 'Edit subcategory')

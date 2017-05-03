@@ -1,0 +1,10 @@
+%fieldset
+  %legend= "Set discount for #{@admin_product.name}"
+  =form_tag 'products/set_discount', remote: true do
+    .field
+      =label_tag "Old price: #{@admin_product.price} pln"
+    .field
+      =label_tag :discount
+      =number_field_tag :discount
+    .action
+      =submit_tag

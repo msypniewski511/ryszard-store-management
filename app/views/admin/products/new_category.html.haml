@@ -1,0 +1,5 @@
+%fieldset
+  %legend
+    = "New Product in #{Admin::Category.find(@category_id).name} category"
+  = render 'form_category'
+= link_to 'Back', admin_products_path, remote: true

@@ -1,0 +1,15 @@
+%tr{class: "#{main_product.check_status}"}
+  %td
+    = Admin::Product.find(main_product.product_id).name
+  %td
+    = main_product.count
+  %td
+    = main_product.date_added.strftime("%Y-%d-%m")
+  %td 
+    = main_product.date_expiry.strftime("%Y-%d-%m")
+  %td
+    = main_product.time_expiry.to_s + "days"
+  %td
+    = link_to 'decrese count', expiry_dates_product_decrese_count_path(id: main_product.id), remote: true
+    = link_to(image_tag('stock-tool-iscissors-22.png'), admin_products_product_set_discount_path(id: main_product.product_id), title: "Set discount!", class: "action", remote: true)
+    = link_to(image_tag('dialogs-icon-delete.png'), expiry_date_path(main_product), remote: true, title: 'Delete product from expiry allerts!', method: :delete)

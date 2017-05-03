@@ -1,6 +1,6 @@
 class Admin::ProductsController < ApplicationController
   before_action :set_products, only: [:destroy, :create, :update]
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, only: [:show, :edit, :update, :destroy, :product_set_discount, :set_discount]
   before_action :set_sort, only: :index
   #before_action :set_s3_direct_post, only: [:new, :edit, :create, :update]
   rescue_from ActiveRecord::RecordNotFound, with: :not_found
@@ -21,9 +21,43 @@ class Admin::ProductsController < ApplicationController
   def show
   end
 
+  def search
+    @title = "Szukaj"
+    if params[:commit] == "Szukaj" || params[:query]
+      if params[:query] == ''
+        @products = Admin::Product.all
+        return
+      else
+      regex = "^#{params[:query]}+"
+      @products = Admin::Product.where("name ~* ?", regex)
+    end
+    end
+      respond_to do |format|
+        format.html
+        format.js {}
+        format.html { redirect_to admin_index_path}
+      end
+    @products_count = Admin::Product.all.size
+  end
+
   # GET /admin/products/new
   def new
     @admin_product = Admin::Product.new
+  end
+
+  def new_company
+    @admin_product = Admin::Product.new
+    @company_id = params[:company_id]
+  end
+
+  def new_category
+    @admin_product = Admin::Product.new
+    @category_id = params[:category_id]
+  end
+
+  def new_sub_category
+    @admin_product = Admin::Product.new
+    @subcategory_id = params[:subcategory_id]
   end
 
   # GET /products/1/edit
@@ -75,6 +109,15 @@ class Admin::ProductsController < ApplicationController
     end
   end
 
+  def product_set_discount
+    @title = "Set discount"
+  end
+
+  def set_discount
+    @admin_product.discount = params[:discount]
+    
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_s3_direct_post
@@ -90,7 +133,7 @@ class Admin::ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_product_params
-      params.require(:admin_product).permit(:name, :description, :company_id, :category_id, :subcategory_id, :price, :picture)
+      params.require(:admin_product).permit(:name, :description, :company_id, :category_id, :subcategory_id, :price, :discount, :picture)
     end
 
     def not_found

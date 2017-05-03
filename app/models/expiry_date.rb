@@ -23,9 +23,65 @@ class ExpiryDate < ApplicationRecord
     puts "Zmieniono expiry date "
   end
 
+  # count products with in_period status
+  def self.count_in_period
+    count = 0
+    ExpiryDate.all.each do |e|
+      if e.check_status == 'in_period' then
+        count = count + 1
+      end
+    end
+    return count
+  end
+
+  # count products with after_period status
+  def self.count_after_period
+    count = 0
+    ExpiryDate.all.each do |e|
+      if e.check_status == 'after_period' then
+        count = count + 1
+      end
+    end
+    return count
+  end
+
+  # Check the current product is present in its expiry period or behind id. 
+  def check_status
+    # beggining of expiry perriod
+    day_beggining_expiry = self.date_expiry - self.time_expiry.days
+    if Time.now >= day_beggining_expiry && Time.now <= self.date_expiry
+      return 'in_period'
+    elsif Time.now >= self.date_expiry
+      return 'after_period'
+    end
+    return 'normal'
+
+  end
+
 private
+
   def destroy_calendar
 
+  end
+
+  def self.get_products_in_period
+    tab = []
+    ExpiryDate.all.each do |e|
+      if e.check_status == 'in_period' then
+        tab << e
+      end
+    end
+    return tab
+  end
+
+    def self.get_products_after_period
+    tab = []
+    ExpiryDate.all.each do |e|
+      if e.check_status == 'after_period' then
+        tab << e
+      end
+    end
+    return tab
   end
 
   def get_month(date_expiry, time_expiry)

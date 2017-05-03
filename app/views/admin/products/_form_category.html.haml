@@ -1,0 +1,33 @@
+= form_for(@admin_product, authenticity_token: true, remote: true) do |f|
+  - if @admin_product.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@admin_product.errors.count, "error")} prohibited this category from being saved:"
+      %ul
+        - @admin_product.errors.full_messages.each do |msg|
+          %li= msg
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :description
+    = f.text_area :description
+  .field
+    = f.label :company
+    = f.collection_select(:company_id, Admin::Company.all, :id, :name)
+
+  = f.hidden_field :category_id, value: @category_id
+  .field
+    = f.label :subcategory
+    = f.collection_select(:subcategory_id, Admin::SubCategory.all, :id, :name)
+  .field
+    = f.label :price
+    = f.text_field :price
+  .field
+    = f.label :discount
+    = f.number_field :discount
+    /= f.number_field :category_id
+  .field
+    = f.label :picture, "Wybierz obraz"
+    = f.file_field :picture, accept: 'image/jpeg,image/gif,image/png'
+  .action
+    = f.submit

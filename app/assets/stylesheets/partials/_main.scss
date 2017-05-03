@@ -77,11 +77,26 @@ h3.form, #info {
   padding: 5px 0 0 5px;
 }
 h3{
+  padding: 5px;
   &.expiry {
-    @include gradient(red, white);
+    @include gradient(red, pink);
   }
   &.description {
     @include gradient(#CCFFCC, #00FF00);
+    padding: 5px;
+    overflow: auto;
+    div#search {
+      opacity: 1.0;
+      float: right;
+      padding: 5px;
+    }
+    div#title {
+      float: left;
+      padding: 5px;
+    }
+  }
+  &.in_period {
+    @include gradient(orange, yellow);
   }
 }
 

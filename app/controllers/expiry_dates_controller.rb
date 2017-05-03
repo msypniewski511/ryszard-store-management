@@ -1,5 +1,5 @@
 class ExpiryDatesController < ApplicationController
-  before_action :set_expiry_date, only: [:show, :edit, :update, :destroy]
+  before_action :set_expiry_date, only: [:show, :edit, :update, :destroy, :product_decrese_count, :product_change_count]
 
   # GET /expiry_dates
   # GET /expiry_dates.json
@@ -60,6 +60,28 @@ class ExpiryDatesController < ApplicationController
         format.html { render :edit }
         format.json { render json: @expiry_date.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def product_decrese_count
+    @product = Admin::Product.find(@expiry_date.product_id)
+  end
+
+  def product_change_count
+    count = @expiry_date.count.to_i
+    count = count - params[:count].to_i
+    if count == 0 then
+      destroy
+    else
+      @expiry_date.count = count
+      @expiry_date.save
+    end
+    respond_to do |format|
+      flash.now[:notice] = "Count was successfully destroyed."
+      @expiry_dates = ExpiryDate.all
+      format.js {}
+      format.html {}
+      format.json { head :no_content }
     end
   end
 

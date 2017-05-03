@@ -1,0 +1,16 @@
+-if @id == 1
+  %h3.in_period Listing products in period of alert time.
+-elsif @id == 2
+  %h3.expiry Listing products after expiry date.
+%table
+  %thead.expiry
+    %tr
+      %th Nazwa
+      %th Count
+      %th Part number
+      %th Date expiry
+      %th Expiry period
+      %th Actions
+  %tbody
+    =render partial: 'main_product', collection: @products
+    %tr 

@@ -1,5 +1,18 @@
 %h3.description
   Additional info:
-  %br
+  %hr
   ="#{Admin::Product.count} products in database."
+  %hr
+  ="#{ExpiryDate.count} products in store."
+  %hr
+  ="#{Admin::Category.count} categories."
+  %hr
+  ="#{Admin::Company.count} comanies."
+  %br
+%h3.in_period
+  ="#{ExpiryDate.count_in_period} products in alert time."
+  = link_to(image_tag('info.png'), admin_analyzer_products_in_period_path, remote: true, title: 'Show products!', class: 'action_img_nav' )
+%h3.expiry
+  ="#{ExpiryDate.count_after_period} products after expiry dates in store."
+  = link_to(image_tag('info.png'), admin_analyzer_products_after_period_path, remote: true, title: 'Show products!!', class: 'action_img_nav' )
 =image_tag('medium/buynow.png')

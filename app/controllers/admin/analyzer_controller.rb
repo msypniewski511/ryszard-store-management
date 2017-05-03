@@ -16,4 +16,22 @@ class Admin::AnalyzerController < ApplicationController
   	@products_expiry = ExpiryDate.where(product_id: params[:id])
   	@product = Admin::Product.find(params[:id]) 
   end
+
+  def products_in_period
+    @id = 1
+    @products = ExpiryDate.get_products_in_period
+    @ptitle = "Lista produktow w okresie alertu"
+  end
+
+  def products_after_period
+    @id = 2
+    @products = ExpiryDate.get_products_after_period
+    @ptitle = "Lista produktow w okresie alertu"
+
+  end
+
+  private
+  def set_time
+    @time = Time.now
+  end
 end

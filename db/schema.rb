@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170501100014) do
+ActiveRecord::Schema.define(version: 20170503021502) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(version: 20170501100014) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.string   "picture"
+    t.integer  "discount"
     t.index ["name"], name: "index_admin_products_on_name", using: :btree
   end
 
@@ -79,6 +80,14 @@ ActiveRecord::Schema.define(version: 20170501100014) do
     t.datetime "updated_at",  null: false
     t.integer  "time_expiry"
     t.index ["product_id"], name: "index_expiry_dates_on_product_id", using: :btree
+  end
+
+  create_table "quantity_products", force: :cascade do |t|
+    t.integer  "quantyty"
+    t.integer  "part_number"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "expiry_date_id"
   end
 
 end

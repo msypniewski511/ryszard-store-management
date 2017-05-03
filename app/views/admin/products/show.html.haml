@@ -6,14 +6,19 @@
     %th Category
     %th Subcategory
     %th Price
+    %th Discount
   %tr
     %td= @admin_product.name
     %td= @admin_product.company.name
     %td= @admin_product.category.name
     %td= @admin_product.subcategory.name
     %td= @admin_product.price
+    %td= @admin_product.discount if @admin_product.discount?
+  %tr
 -if @admin_product.picture? then
-  = image_tag @admin_product.picture.url      
+  = image_tag @admin_product.picture.url
+-else
+  = image_tag 'missing.png'     
 -unless @admin_product.description == "" then
   = textilize(@admin_product.description)
 -else

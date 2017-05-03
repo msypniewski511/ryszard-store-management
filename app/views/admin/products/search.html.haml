@@ -1,0 +1,42 @@
+:javascript
+  $(document).ready(function(){
+
+  });//Koniec document ready.
+  $(function(){
+    $(".by_product_up, .by_product_down").click(function(event){
+      $(".by_product_up, .by_product_down").toggle();
+    })
+  })
+
+%h3.description
+  Products
+  =render partial: 'search_box'
+%table
+  %thead
+    %tr
+      /sort by name
+      %th
+        = naglowek("/admin/products?sort_by=name", "Name", session[:name], 1)
+        = link_to "Name", "/admin/products?sort_by=name", remote: true
+      / sort by company names
+      %th
+        = naglowek("/admin/products?sort_by=company_id", "Company", session[:company], 2)
+        =link_to('Company', "/admin/products?sort_by=company_id", remote: true)
+      / sort by category names
+      %th
+        = naglowek("/admin/products?sort_by=category_id", "Category", session[:category], 3)
+        =link_to('Category', "/admin/products?sort_by=category_id", remote: true)
+      / sort by subcategories names
+      %th
+        = naglowek("/admin/products?sort_by=subcategory_id", "Subcategory", session[:subcategory], 4)
+        =link_to('Subcategory', "/admin/products?sort_by=subcategory_id", remote: true)
+      %th{ colspan: 3 } Action
+
+  %tbody.index
+    =render partial: 'shared/product', collection: @products
+    /= will_paginate @products, remote: true
+    %tr
+      %td
+        = link_to(image_tag('add_over.png'), new_admin_product_url, remote: true, title: 'Add new product to database!' , class: "action")
+        = link_to('Add new product', new_admin_product_url, remote: true, title: 'Add new product to database!' , class: "action")
+      %td{colspan: 6}

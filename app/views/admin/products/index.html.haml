@@ -8,7 +8,12 @@
     })
   })
 
-%h3 Products
+%h3.description
+  %div#title
+    %span.content
+      Lista produktów
+  %div#search
+    =render partial: 'search_box'
 %table
   %thead
     %tr
