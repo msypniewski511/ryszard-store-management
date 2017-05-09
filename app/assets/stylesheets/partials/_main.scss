@@ -1,6 +1,13 @@
 @import "partials/colors.scss";
 @import "partials/gradient.scss";
 @import "partials/_cross_browser_radius.scss";
+
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
 body {
   background-color: $body-color-aqua;
   width: 960px;
@@ -164,4 +171,16 @@ span.database_name {
   padding-left: 0.2em;
   color:   white;
   display: none;
+}
+
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  margin-bottom: 45px;
+  background-color: white;
+  @include box_sizing;
 }
