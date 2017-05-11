@@ -113,6 +113,53 @@ span.table_name {
 span.database_name {
   color: orange;
 }
+
+/* sidebar */
+
+aside {
+  section.user_info {
+    margin-top: 20px;
+  }
+  section {
+    padding: 10px 0;
+    margin-top: 20px;
+    &:first-child {
+      border: 0;
+      padding-top: 0;
+    }
+    span {
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1;
+    }
+    h1 {
+      font-size: 1.4em;
+      text-align: left;
+      letter-spacing: -1px;
+      margin-bottom: 3px;
+      margin-top: 10px;
+    }
+  }
+}
+
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+
+.gravatar_edit {
+  margin-top: 15px;
+}
+
+/****************** Flash info ************************/
+div.alert-success {
+  background-color: #33FF99;
+  border: 1px solid green;
+  border-radius: 5px;
+  color: green;
+  padding: 5px;
+}
+
 /*################# Notice ###########################*/
 #notice {
   color: green;
@@ -148,7 +195,8 @@ span.database_name {
 
   ul li {
     font-size: 12px;
-    list-style: none;
+    list-style: doted;
+    color: red;
   }
 }
 /************* tooltip *******************/

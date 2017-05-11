@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'catalog/index'
   get 'catalog/show/:id', to: 'catalog#show', as: 'catalog_show'
   get 'catalog/search'
@@ -6,6 +7,9 @@ Rails.application.routes.draw do
 
   get 'expiry_dates/product_decrese_count'
   post 'expiry_dates/product_change_count'
+
+  get  '/signup',  to: 'users#new'
+  post '/signup',  to: 'users#create'
 
 
   namespace :admin do
@@ -41,6 +45,8 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :categories, :subcategories, :companies
   end
+
+  resources :users
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -9,6 +9,9 @@
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   %body
     =render '/shared/header'
+    -flash.each do |message_type, message|
+      %div{class: "alert-#{message_type}"}
+        = message
     - if(notice) then
       %p#notice
         = notice
