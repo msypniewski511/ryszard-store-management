@@ -12,6 +12,12 @@ class ActiveSupport::TestCase
   fixtures "admin/companies"
   fixtures "admin/products"
   fixtures :expiry_dates
+  fixtures :users
 
   # Add more helper methods to be used by all tests here...
+
+  # Returns true if a test user is logged in.
+  def is_logged_in?
+    !session[:user_id].nil?
+  end
 end

@@ -160,10 +160,18 @@ div.alert-success {
   padding: 5px;
 }
 
+div.alert-danger {
+  background-color: #FFCCFF;
+  border: 1px solid red;
+  border-radius: 5px;
+  color: red;
+  padding: 5px;
+}
+
 /*################# Notice ###########################*/
 #notice {
   color: green;
-  background-color: #00CC66;
+  background-color: #FFC6E0;
   padding: 2px;
   border-radius: 5px;
 }

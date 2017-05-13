@@ -1,0 +1,19 @@
+-provide(:title, 'Zaloguj się')
+
+%fieldset
+  %legend
+    Zaloguj się
+  = form_for(:session, url: login_path) do |f|
+    .field
+      = f.label :email
+      = f.email_field :email
+
+    .field
+      = f.label :password, "Hasło"
+      = f.password_field :password
+
+    .action
+      = f.submit "Zaloguj", class: "btn btn-primary"
+  %p
+    Nowy użytkownik? 
+    = link_to "Zapisz się!", signup_path

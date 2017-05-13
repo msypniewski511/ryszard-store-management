@@ -6,11 +6,13 @@
   %ul.nav
     %li
       = link_to "Catalog", catalog_index_path
-    %li
-      = link_to "Adminstration", admin_index_path
-    %li
-      = link_to "Callendar", calendar_index_path
-    %li.log
-      = link_to "Login"
-    %li.log
-      = link_to "Logout"
+    - if logged_in?
+      %li
+        = link_to "Adminstration", admin_index_path
+      %li
+        = link_to "Callendar", calendar_index_path
+      %li.log
+        = link_to "Logout", logout_path, method: 'delete'
+    - else
+      %li.log
+        = link_to "Login", login_path
