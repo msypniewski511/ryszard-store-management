@@ -6,8 +6,9 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:session][:email].downcase)
     if user && user.authenticate(params[:session][:password])
       log_in user
-      redirect_to catalog_index_path
+      #redirect_to catalog_index_path
       # Log the user in and redirect to the user's show page.
+      redirect_back_or catalog_index_path
     else
       flash.now[:danger] = 'Nieprawidłowe hasło bądź email'
       render 'new'

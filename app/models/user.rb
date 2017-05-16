@@ -7,7 +7,7 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
 
   has_secure_password
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
 
   # Returns the hash digest of the given string.
@@ -15,5 +15,18 @@ class User < ApplicationRecord
     cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
                                                   BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
+  end
+
+  def admin?
+    self.status == 3
+  end
+
+  def toggle!(status)
+    if status == 'default' then
+      self.status = 0
+    elsif status == 'admin' then
+      self.status = 3
+    end
+    self.save
   end
 end

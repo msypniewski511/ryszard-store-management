@@ -1,2 +1,7 @@
-%h1 Users#index
-%p Find me in app/views/users/index.html.haml
+-provide(:title, 'Wszyscy użytkownicy')
+%h1 Użytkownicy
+
+= will_paginate
+%ul{class: "users"}
+  =render @users
+= will_paginate
