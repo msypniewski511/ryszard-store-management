@@ -1,0 +1,5 @@
+%strong
+  ="Proszę potwierdź usunięci " 
+  %em= "#{@product.name}" 
+  z koszyka!
+  =button_to 'Potwierdź', action: 'remove', id: params[:id]

@@ -1,0 +1,6 @@
+$('div#shopping_cart').html("<%=j render partial: 'cart/cart' %>");
+$('div#cart').html("<%=j render partial: 'catalog/cart_info' %>")
+$("li#current_item").show('blind', 1000);
+$('li#current_item').css({'background-color':'aqua'}).animate({'background-color':'rgba(0, 0, 0, 0.1)'}, 1500);
+$('p#cart_notice').css({'background-color':'purple'}).animate({'background-color':'rgba(0, 0, 0, 0.1)'}, 1500);
+

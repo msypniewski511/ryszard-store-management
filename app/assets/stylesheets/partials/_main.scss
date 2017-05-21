@@ -258,4 +258,7 @@ em {
   font-weight: bold;
   font-style: oblique;
   color: pink;
+  &.flash_catalog {
+    color: blue;
+  }
 }

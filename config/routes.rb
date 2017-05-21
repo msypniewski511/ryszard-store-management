@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   post 'cart/add'
   get 'cart/add'
 
+  post 'cart/remove'
+
   get 'catalog/index'
   get 'catalog/show/:id', to: 'catalog#show', as: 'catalog_show'
   get 'catalog/search'

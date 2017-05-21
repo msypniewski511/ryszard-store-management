@@ -1,2 +1,2 @@
 %p#cart_notice
-  =flash[:cart_notice]
+  =flash[:cart_notice].html_safe unless flash[:cart_notice].blank?

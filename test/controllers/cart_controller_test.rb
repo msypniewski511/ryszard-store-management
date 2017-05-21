@@ -22,4 +22,20 @@ class CartControllerTest < ActionDispatch::IntegrationTest
   	assert_response :success
   	assert_equal 1, Cart.find(@request.session[:cart_id]).cart_items.size
   end
+
+  test "removing item from the cart" do
+    post cart_add_path, params: { id: 1 }
+    assert_equal [Admin::Product.find(1)], Cart.find(@request.session[:cart_id]).products
+
+    post cart_remove_path, params: { id: 1 }
+    assert_equal [], Cart.find(@request.session[:cart_id]).products
+  end
+
+  test "removing item from the cart with xhr" do
+    post cart_add_path, params: { id: 1 }
+    assert_equal [Admin::Product.find(1)], Cart.find(@request.session[:cart_id]).products
+
+    post cart_remove_path, params: { id: 1 }, xhr: true
+    assert_equal [], Cart.find(@request.session[:cart_id]).products
+  end
 end

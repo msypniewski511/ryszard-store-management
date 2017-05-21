@@ -12,4 +12,8 @@ module ApplicationHelper
   	button_to text, cart_add_path(id: product.id), remote: true, 
   	  title: 'Add to Cart'
   end
+
+  def remove_product_link(text, product)
+    link_to text, cart_remove_path(id: product.id), method: :post, remote: true, title: 'Remove product'
+  end
 end
