@@ -1,0 +1,5 @@
+%strong
+  ="Proszę potwierdź dodanie " 
+  %em= "#{@product.name}" 
+  do koszyka!
+  =button_to 'Potwierdź', action: 'add', id: params[:id]

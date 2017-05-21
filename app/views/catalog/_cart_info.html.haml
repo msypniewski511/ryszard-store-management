@@ -1,0 +1,20 @@
+
+%h1.catalog_title
+  Koszyk:
+%br
+-unless Cart.all.blank?
+  ="Masz #{@cart.cart_items.size} produkty w koszyku."
+-else
+  Brak produktow
+%hr.cart
+%br
+Wyslanych: 0
+%br
+%br
+-unless Cart.all.blank?
+  ="Razem: #{@cart.total} zł"
+-else
+  Razem:     0
+%br
+%br
+%button Zamow

@@ -19,6 +19,9 @@
     %hr
     =yield
 
+    -if @cart
+      %div#shopping_cart
+        =render partial: 'cart/cart'
     / Footer
     =render '/shared/footer'
     .debug_dump

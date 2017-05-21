@@ -1,8 +1,11 @@
 class Admin::Product < ApplicationRecord
   has_many :expiry_dates, class_name: "ExpiryDate", dependent: :destroy
+  has_many :cart_items
+  has_many :carts, through: :cart_items
   belongs_to :company, class_name: "Admin::Company"
   belongs_to :category, class_name: "Admin::Category"
   belongs_to :subcategory, class_name: 'Admin::SubCategory', :foreign_key => "subcategory_id"
+
 
   mount_uploader :picture, PictureUploader
   

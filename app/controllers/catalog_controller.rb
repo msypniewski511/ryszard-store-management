@@ -1,4 +1,5 @@
 class CatalogController < ApplicationController
+  before_action :initialize_cart
   def index
   	@title = "Lista produktow"
   	@size = Admin::Product.count

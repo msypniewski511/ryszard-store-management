@@ -9,17 +9,7 @@
     %div#side_bar_catalog
       =render partial: 'side_bar_catalog'
     %div#cart
-      %h1.catalog_title
-        Koszyk:
-      %br
-      Brak produktow
-      %hr.cart
-      %br
-      Wyslanych: 0
-      %br
-      Razem:     0
-      %br
-      %button Zamow
+      = render partial: 'cart_info'
     %div#new
       =render partial: 'show_last'
 %hr

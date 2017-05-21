@@ -1,0 +1,19 @@
+-if flash[:cart_notice]
+  =render partial: 'cart/cart_notice'
+%h3
+  Twój koszyk zakupów:
+%ul
+  -for item in @cart.cart_items
+    -if item.product.id.to_i == @current_item.to_i
+      %li{id: "current_item"}
+        =render partial: 'cart/item', object: item
+    -else
+      %li{id: "cart_item_#{item.product.id}"}
+        =render partial: 'cart/item', object: item
+        =item.product.id
+%p#cart_total
+  %strong
+    Razem:
+    = sprintf("%0.2f", @cart.total) + " zł"
+    %br
+    =@current_item

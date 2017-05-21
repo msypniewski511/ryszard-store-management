@@ -6,6 +6,8 @@
     %b Cena:
   %dd= sprintf("%0.2f", @product.price) + " pln"
   %dt
+    =add_product_link "Dodaj do koszyka", @product
+  %dt
     %b Firma:
   %dd= @company.name
   %dt Opis produktu:

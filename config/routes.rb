@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
+  post 'cart/add'
+  get 'cart/add'
+
   get 'catalog/index'
   get 'catalog/show/:id', to: 'catalog#show', as: 'catalog_show'
   get 'catalog/search'
