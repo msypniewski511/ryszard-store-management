@@ -22,6 +22,7 @@
     -if @cart
       %div#shopping_cart
         =render partial: 'cart/cart'
+      /= drop_receiving_element()
     / Footer
     =render '/shared/footer'
     .debug_dump

@@ -21,4 +21,13 @@ class CartController < ApplicationController
       format.js { @current_item = params[:id] }
     end
   end
+
+  def clear
+    @cart.cart_items.destroy_all
+    flash.now[:cart_notice] = "<em>Cleared the cart</em>"
+    respond_to do |format|
+      format.js
+      format.html{ redirect_to controller: 'catalog'}
+    end
+  end
 end

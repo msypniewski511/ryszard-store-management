@@ -4,7 +4,7 @@
 %hr
 = will_paginate @products
 - @products.each do |product|
-  %div.product_list
+  %div{class: 'product_list', id: "product_#{product.id}"}
     %div.image_container
       -if product.picture? then
         =link_to((image_tag product.picture.url, class: 'list_image'), catalog_show_path(product.id, page: params[:page]))
