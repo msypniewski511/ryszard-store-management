@@ -12,8 +12,14 @@
       = f.label :password, "Hasło"
       = f.password_field :password
 
+    .field
+      = f.label :remember_me, class: "checkbox inline" do
+        = f.check_box :remember_me
+        %span Zapamiętaj mnie na tym komputerze
+
     .action
       = f.submit "Zaloguj", class: "btn btn-primary"
+
   %p
     Nowy użytkownik? 
     = link_to "Zapisz się!", signup_path

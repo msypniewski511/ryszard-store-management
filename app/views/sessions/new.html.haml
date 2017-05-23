@@ -12,6 +12,11 @@
       = f.label :password, "Hasło"
       = f.password_field :password
 
+    .field
+      = f.label :remember_me, "Zapamiętaj mnie na tym komputerze"
+      = f.check_box :remember_me
+    %br
+
     .action
       = f.submit "Zaloguj", class: "btn btn-primary"
   %p
